@@ -4,7 +4,10 @@
     padding: 50px 0 15px 0;
     width: 100%;
 }
-.full{ font-size: 16px;font-family: KaiTi，Arial,serif;}
+.full{
+    font-size: 16px;
+    font-family: "楷体"，Arial,serif;
+}
 .logo-img {
     width: 56px;
     height: 56px;

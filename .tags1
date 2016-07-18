@@ -7,7 +7,7 @@
 title	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^title: 潇之风殿$/;"	function	line:1
 description	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^description: My Personal Blog$/;"	function	line:2
 author	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^author: L$/;"	function	line:3
-logo	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^logo: \/assets\/logo1.jpg$/;"	function	line:4
+logo	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^logo: \/assets\/logo.ico$/;"	function	line:4
 github	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^github: https:\/\/github.com\/liuyanfight$/;"	function	line:5
 about	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^about: This is your life, and it’s ending one minute at a time.$/;"	function	line:6
 disqus_shortname	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^disqus_shortname: liuyanfight$/;"	function	line:7
@@ -20,7 +20,7 @@ url	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^      url: \
 icon	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^      icon: fa-comments$/;"	function	line:16
 url	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^      url: \/projects\/$/;"	function	line:18
 icon	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^      icon: fa-desktop$/;"	function	line:19
-url	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^      url: \/resume\/index.html$/;"	function	line:21
+url	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^      url: \/resume\/$/;"	function	line:21
 icon	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^      icon: fa-graduation-cap$/;"	function	line:22
 url	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^      url: https:\/\/github.com\/liuyanfight$/;"	function	line:24
 icon	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^      icon: fa-github$/;"	function	line:25
