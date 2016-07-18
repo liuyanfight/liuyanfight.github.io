@@ -20,7 +20,7 @@ url	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^      url: \
 icon	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^      icon: fa-comments$/;"	function	line:16
 url	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^      url: \/projects\/$/;"	function	line:18
 icon	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^      icon: fa-desktop$/;"	function	line:19
-url	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^      url: \/resume\/$/;"	function	line:21
+url	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^      url: \/_site\/resume\/$/;"	function	line:21
 icon	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^      icon: fa-graduation-cap$/;"	function	line:22
 url	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^      url: https:\/\/github.com\/liuyanfight$/;"	function	line:24
 icon	C:\Users\L\Documents\GitHub\liuyanfight.github.io\_config.yml	/^      icon: fa-github$/;"	function	line:25

@@ -18,7 +18,7 @@ urls:
       url: /projects/
       icon: fa-desktop
     - text: Resume
-      url: /resume/
+      url: /_site/resume/
       icon: fa-graduation-cap
     - text: Github
       url: https://github.com/liuyanfight
