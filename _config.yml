@@ -1,10 +1,10 @@
-title: 潇之风殿
+title: Labanan
 description: My Personal Blog
 author: L
 logo: http://aboutashu.com/hcz-jekyll-blog/static/img/avatar.png
 github: https://github.com/liuyanfight
-about: Since 2016/7/18
-disqus_shortname: L
+about: Freelance developer
+disqus_shortname: liuyanfight
 google_analytics: UA-72862926-1
 urls:
     - text: Home
@@ -49,7 +49,7 @@ enableTags: true
 tagarray: []
 
 url: "http://liuyanfight.github.io"
-baseurl: "/_site"
+baseurl: "/"
 paginate: 20
 per_page: 20
 paginate_path: "/page:num/"
