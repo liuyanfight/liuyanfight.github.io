@@ -3,7 +3,7 @@ description: My Personal Blog
 author: L
 logo: http://aboutashu.com/hcz-jekyll-blog/static/img/avatar.png
 github: https://github.com/liuyanfight
-about: Freelance developer
+about: Since 2016/7/18
 disqus_shortname: L
 google_analytics: UA-72862926-1
 urls:
@@ -21,7 +21,7 @@ urls:
       url: '#'
       icon: fa-graduation-cap
     - text: Github
-      url: https://github.com/ashutosh2k12
+      url: https://github.com/liuyanfight
       icon: fa-github
     - text: XML Feed
       url: /feed.xml
@@ -48,8 +48,8 @@ share:
 enableTags: true
 tagarray: []
 
-url: "http://liuyanfight.github.io/"
-baseurl: "/liuyanfight"
+url: "http://liuyanfight.github.io"
+baseurl: "/_site"
 paginate: 20
 per_page: 20
 paginate_path: "/page:num/"
