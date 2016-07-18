@@ -1,7 +1,7 @@
 title: 潇之风殿
 description: My Personal Blog
 author: L
-logo: /assets/logo.ico
+logo: /assets/logo1.jpg
 github: https://github.com/liuyanfight
 about: This is your life, and it’s ending one minute at a time.
 disqus_shortname: liuyanfight
@@ -18,7 +18,7 @@ urls:
       url: /projects/
       icon: fa-desktop
     - text: Resume
-      url: /resume/
+      url: /resume/index.html
       icon: fa-graduation-cap
     - text: Github
       url: https://github.com/liuyanfight
