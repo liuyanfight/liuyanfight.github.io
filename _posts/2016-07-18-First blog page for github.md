@@ -2,7 +2,7 @@
 layout: post
 title:  "First blog page for github"
 date:   2016-07-18 20:00:00
-categories: jekyll
+categories: 日常
 ---
 
 - 现在看起来在Github上配置blog要容易很多了，而且官方也支持。

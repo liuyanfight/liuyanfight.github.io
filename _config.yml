@@ -38,7 +38,7 @@ share:
 
 
 enableTags: true
-tagarray: []
+tagarray: ['Java',C]
 
 url: "http://liuyanfight.github.io"
 baseurl: "http://liuyanfight.github.io"
