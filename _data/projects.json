@@ -2,7 +2,7 @@
 	{
 		"name": "Cool project 1",
 		"image": "placeholder.jpg",
-		"url": "/static/projects/hp.html",
+		"url": "107.170.209.4/project/bookmanage",
 		"date": "Jul 2016",
 		"tags": ["HTML","PHP"]
 	},
