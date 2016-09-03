@@ -1,51 +1,57 @@
-title: 潇之风殿
-description: My Personal Blog
-author: L
-logo: /assets/logo.ico
-github: https://github.com/liuyanfight
-about: This is your life, and it’s ending one minute at a time.
-disqus_shortname: liuyanfight
-google_analytics: UA-72862926-1
-urls:
-    - text: Home
-      url: /
-      icon: fa-home
-      layout: post
-    - text: About
-      url: /about/
-      icon: fa-comments
-    - text: Projects
-      url: /projects/
-      icon: fa-desktop
-    - text: Resume
-      url: /resume/
-      icon: fa-graduation-cap
-    - text: Github
-      url: https://github.com/liuyanfight
-      icon: fa-github
+# Site settings
+name: 潇之风殿
+email: liuyanfight@foxmail.com
+author: Liu
+
+keywords: jekyll, jekyll theme, jekyll framework, stuffthings
+description: > # This is your life, and it’s ending one minute at a time.
+
+baseurl: /
+url: https://liuyanfight.github.io
+
+header: yes
+header_sm: images/banner-small.jpg
+header_med: images/banner-med.jpg
+header_large: images/banner-large.jpg
+header_xl: images/banner-xl.jpg
 
 
-social:
-    - icon: fa-weibo
-      link: 'http://weibo.com/329249870'
-    - icon: fa-twitter
-      link: 'https://twitter.com/liuyanfight'
+# Exclude our ruby stuff
+exclude: [.bundle, bin, vendor, Gemfile, Gemfile.lock, Rakefile, s3_website.yml, .last_optimized]
 
 
-share:
-  twitter_username: liuyanfight
-  fb_appid: 000000000000
-
-
-enableTags: true
-tagarray: [Java,C,Matlab,C++]
-
-url: "http://liuyanfight.github.io"
-baseurl: ""
-paginate: 20
-per_page: 20
-paginate_path: "/page:num/"
+# Build settings
 markdown: kramdown
+kramdown:
+  input: GFM
+
+destination: _site
+
 gems:
-  - jekyll-paginate
-  - jekyll-gist
+  - jekyll-feed
+
+feed:
+  path: atom.xml
+
+# Compress our Css
+#sass:
+#    style: :compressed
+
+permalink: /blog/:year/:title
+
+#### SEO Stuff
+# Google Analytics
+google_universal_analytics:
+google_universal_analytics_cookiedomain: auto
+
+# Facebook Opengraph
+facebook_user:
+facebook_app_id:                      #enter your App ID
+facebook_locale: en_US
+facebook_page:                        #the URL of your Facebook Page
+facebook_image:                       #enter a default image (at least 200x200px) to use here for posts/pages that don't have one.
+
+# Twitter Cards
+twitter_user:
+twitter_card: true
+twitter_image:                        #enter a default image (at least 200x200px) to use here for posts/pages that don't have one.
