@@ -3,7 +3,7 @@ title: My Blog
 name: L # your name
 email: liuyanfight@foxmail.com # your email address
 description: This is your life and it's ending one minute at a time. # this means to ignore newlines until "baseurl:"
-baseurl: "/liuyanfight.github.io" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://liuyanfight.github.io" # the base hostname & protocol for your site
 twitter_username: liuyanfight # your Twitter username
 github_username: liuyanfight # your Github username
