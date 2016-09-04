@@ -2,7 +2,10 @@
 layout: post
 title:  "No Pokemon Go"
 date:   2016-07-21
+author: L
 categories: 日常
+tags: everyday
+finished: true
 ---
 
 - Pokemon Go 中国还是锁区。歹势！好像玩啊～～～

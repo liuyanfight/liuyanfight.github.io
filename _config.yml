@@ -1,57 +1,18 @@
 # Site settings
-name: 潇之风殿
-email: liuyanfight@foxmail.com
-author: Liu
+title: My Blog
+name: L # your name
+email: liuyanfight@foxmail.com # your email address
+description: This is your life and it's ending one minute at a time. # this means to ignore newlines until "baseurl:"
+baseurl: "/" # the subpath of your site, e.g. /blog
+url: "https://liuyanfight.github.io" # the base hostname & protocol for your site
+twitter_username: liuyanfight # your Twitter username
+github_username: liuyanfight # your Github username
+disqus_username: liuyanfight # your disqus username
 
-keywords: jekyll, jekyll theme, jekyll framework, stuffthings
-description: > # This is your life, and it’s ending one minute at a time.
+google-analytics:  # add it if you have one
 
-baseurl: /
-url: https://liuyanfight.github.io
-
-header: yes
-header_sm: images/banner-small.jpg
-header_med: images/banner-med.jpg
-header_large: images/banner-large.jpg
-header_xl: images/banner-xl.jpg
-
-
-# Exclude our ruby stuff
-exclude: [.bundle, bin, vendor, Gemfile, Gemfile.lock, Rakefile, s3_website.yml, .last_optimized]
-
+skillstree: false # turn on or off the skills tree in about page
 
 # Build settings
+permalink: none
 markdown: kramdown
-kramdown:
-  input: GFM
-
-destination: _site
-
-gems:
-  - jekyll-feed
-
-feed:
-  path: atom.xml
-
-# Compress our Css
-#sass:
-#    style: :compressed
-
-permalink: /blog/:year/:title
-
-#### SEO Stuff
-# Google Analytics
-google_universal_analytics:
-google_universal_analytics_cookiedomain: auto
-
-# Facebook Opengraph
-facebook_user:
-facebook_app_id:                      #enter your App ID
-facebook_locale: en_US
-facebook_page:                        #the URL of your Facebook Page
-facebook_image:                       #enter a default image (at least 200x200px) to use here for posts/pages that don't have one.
-
-# Twitter Cards
-twitter_user:
-twitter_card: true
-twitter_image:                        #enter a default image (at least 200x200px) to use here for posts/pages that don't have one.
