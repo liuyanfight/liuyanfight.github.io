@@ -15,21 +15,20 @@ finished: true
 ## Python
 - Python is a high-level, dynamically typed multiparadigm programming language.
 
-### Basic data types
+### [Basic data types](https://docs.python.org/2/library/stdtypes.html#numeric-types-int-float-long-complex)
 - __Numbers__
   - `type()`显示字符类型
   - 没有  ++ 和 --
-  - 具体类型见 https://docs.python.org/2/library/stdtypes.html#numeric-types-int-float-long-complex
 - __Booleans__
   - 使用 `and or not`而不是&& ! 等
-- __Strings__
-
+- [__Strings__](https://docs.python.org/2/library/stdtypes.html#string-methods)
   - 可以使用单引号或双引号
   - `len()`显示字符串长度
   - 使用 `+` 用于字符串拼接
   - `hw12 = '%s %s %d' % (hello, world, 12)` 字符串格式化
-  - String类型有很多方法 https://docs.python.org/2/library/stdtypes.html#string-methods
-    ```python
+  - String类型有很多方法
+
+    ```
     s = "hello"
     print s.capitalize() # Capitalize a string; prints "Hello"
     print s.upper() # Convert a string to uppercase; prints "HELLO"
@@ -43,13 +42,13 @@ finished: true
 ### Containers
 - 包含Lists，Dictionaries，settings，Tuples 几种类型
 
-#### Lists
+#### [Lists](https://docs.python.org/2/tutorial/datastructures.html#more-on-lists)
 - `xs=[3,1,2]`创建list
 - list可以包含不同类型的元素
 - list可以出栈和进栈操作
-- 更多方法见https://docs.python.org/2/tutorial/datastructures.html#more-on-lists
 - __Slicing__
-  ```python
+
+  ```
   nums = range(5) # range is a built-in function that creates a list of int
   print nums # Prints "[0, 1, 2, 3, 4]"
   print nums[2:4] # Get a slice from index 2 to 4 (exclusive); prints "[2,3]" 不包括第4个
@@ -65,7 +64,8 @@ finished: true
   - `for ... in ... ：`
   - 枚举遍历列表`for ... in enumerate(...)：`
 - List comprehensions:变换类型
-  ```python
+
+  ```
   nums = [0, 1, 2, 3, 4]
   squares = []
   for x in nums:
@@ -77,53 +77,49 @@ finished: true
   print squares # Prints [0, 1, 4, 9, 16]
   ```
 
-#### Dictionaries
+#### [Dictionaries](https://docs.python.org/2/library/stdtypes.html#dict)
 - dictionary保存一对(key, value).
-- 更多见 https://docs.python.org/2/library/stdtypes.html#dict
 - __Loops:__
 
-  ```python
+  ```
   d = {'person': 2, 'cat': 4, 'spider': 8}
   for animal in d:
     legs = d[animal]
     print 'A %s has %d legs' % (animal, legs)
-  # Prints "A person has 2 legs", "A spider has 8 legs", "A cat has 4 legs
+  # Prints "A person has 2 legs", "A spider has 8 legs",
+  # "A cat has 4 legs
 
   # or use `iteritems`
   d = {'person': 2, 'cat': 4, 'spider': 8}
   for animal, legs in d.iteritems():
     print 'A %s has %d legs' % (animal, legs)
-  # Prints "A person has 2 legs", "A spider has 8 legs", "A cat has 4 legs
+  # Prints "A person has 2 legs", "A spider has 8 legs",
+  # "A cat has 4 legs
   ```
 
-#### Sets
+#### [Sets](https://docs.python.org/2/library/sets.html#set-objects)
 - a set is an unordered collection of distinct elements.无序的
-- 更多见https://docs.python.org/2/library/sets.html#set-objects
 
-#### Tuples
+#### [Tuples](https://docs.python.org/2/tutorial/datastructures.html#tuples-and-sequences)
 - A tuple is an (immutable不变的) ordered list of values.
-- https://docs.python.org/2/tutorial/datastructures.html#tuples-and-sequences
 
-### Functions
+### [Functions]https://docs.python.org/2/tutorial/controlflow.html#defining-functions
 - `def` 定义函数
-- https://docs.python.org/2/tutorial/controlflow.html#defining-functions
 
-### Classes
+### [Classes](https://docs.python.org/2/tutorial/classes.html)
 - `class ...():`
-- https://docs.python.org/2/tutorial/classes.html
 
 ## Numpy
 - Numpy is the core library for scientiAc computing in Python.
 - Numpy的安装时需要源文件编译，若使用**Anaconda**则可以直接使用~
 
-### Arrays
+### [Arrays](http://docs.scipy.org/doc/numpy/user/basics.creation.html#arrays-creation)
 - A numpy array is a grid of values.相同类型
 - The number of dimensions is the rank of the array;
 - the shape of an array is a tuple of integers giving the size of the array along each dimension.
 - `import numpy as `导入包
-- http://docs.scipy.org/doc/numpy/user/basics.creation.html#arrays-creation
 
-### Array indexing
+### [Array indexing](http://docs.scipy.org/doc/numpy/reference/arrays.indexing.html)
 - __Slicing__
   - `b = a[:2, 1:3]` 前两行，第2，3列。
   - 索引从0开始
@@ -131,12 +127,10 @@ finished: true
   - 矩阵处理有点像matlab
 - __Integer array indexng__ 数组索引
 - __Boolean array indexing__ 判断数组条件
-  - http://docs.scipy.org/doc/numpy/reference/arrays.indexing.html
 
-### Datatypes
+### [Datatypes](http://docs.scipy.org/doc/numpy/reference/arrays.dtypes.html)
 - Every numpy array is a grid of elements of the same type.
 - 可以强制定义类型
-- http://docs.scipy.org/doc/numpy/reference/arrays.dtypes.html
 
 ### Array math
 - 基本的数学操作是可以在array上使用的，也可以使用方法（函数）
@@ -217,11 +211,10 @@ print x + np.reshape(w, (2, 1))
 # [ 8 10 12]]
 print x * 2
 ```
-- More about Numpy http://docs.scipy.org/doc/numpy/reference/
+- [More about Numpy](http://docs.scipy.org/doc/numpy/reference/)
 
-## SciPy
+## [SciPy](http://docs.scipy.org/doc/scipy/reference/index.html)
 - SciPy builds on Numpy's function, and provides a large number of functions that operate on numpy arrays and are useful for different types of scientific and engineering applications.
-- http://docs.scipy.org/doc/scipy/reference/index.html
 
 ### Image operations
 - SciPy可以导入一个image到numpy arrays，并且可以write,resize等等。
@@ -230,9 +223,8 @@ print x * 2
 - `imresize`resize图片
 - `imsave`将图片保存到本地
 
-### MATLAB Ales
+### [MATLAB Ales](http://docs.scipy.org/doc/scipy/reference/io.html)
 - `scipy.io.loadmat`和`scipy.io.savemat`可以读写Matlab文件
-- http://docs.scipy.org/doc/scipy/reference/io.html
 
 ### Distance between points
 - `scipy.spatial.distance.pdist`计算一个给定数据集中所有点的距离
@@ -243,11 +235,10 @@ print x * 2
 ## Matplotlib
 - 画图的库，与Matlab相似
 
-### Plotting
+### [Plotting](http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot)
 - `import matplotlib.pyplot as plt`
 - `plt.plot` 作图
 - `plt.show` 显示图像
-- [更多](http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot)
 
 ### Subplots
 - [子图](http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.subplot)
