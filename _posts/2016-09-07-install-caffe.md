@@ -2,7 +2,7 @@
 layout: post
 title: "Caffe安装"
 subtitle: "Computer Vision Software"
-date: 2016-09-04 15：43
+date: 2016-09-07 15：43
 author: L
 category: Computer Vision
 tags: ML 学习 CV DL Sydney Software UTS
