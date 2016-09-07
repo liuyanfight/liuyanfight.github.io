@@ -5,7 +5,7 @@ subtitle: "Computer Vision Software"
 date: 2016-09-05
 author: L
 category: Computer Vision
-tags: ML 学习 CV DL Python Sydney
+tags: ML 学习 CV DL Python Sydney UTS
 finished: true
 ---
 > These notes accompany the Stanford CS class CS231n: Convolutional Neural Networks for Visual Recognition.

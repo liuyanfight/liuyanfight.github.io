@@ -3,7 +3,7 @@ layout: post
 title:  "初到悉尼"
 date:   2016-08-31
 categories: 日常
-tags: everyday sydney
+tags: Everyday Sydney
 finished: true
 ---
 ## 风景

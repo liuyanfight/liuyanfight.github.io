@@ -5,7 +5,7 @@ subtitle: "Computer Vision Software"
 date: 2016-09-04
 author: L
 category: Computer Vision
-tags: ML 学习 CV DL Sydney
+tags: ML 学习 CV DL Sydney Software UTS
 finished: false
 ---
 
