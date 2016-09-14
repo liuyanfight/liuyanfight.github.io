@@ -23,6 +23,7 @@ Aim: dicover meanningful insights and knowledge from data.
 Data mining = process of building models
 
 Models
+
   - Captures the __essence__ of the discoverrd knowledge
   - Can assistant in __understanding__ the world
   - Can be used to make __predictions__
@@ -53,6 +54,7 @@ Each group, get onto the Internet and find at least one success story for data m
 
 
 Answer
+
    - Baseball analytics (e.g. money ball movie)
    - Weather Prediction (We were doing this for a long time)
    - Nate Silver - After Silver successfully called the outcomes in 49 of the 50 states in the 2008 U.S. Presidential election, in 2009 Silver was named one of The World's 100 Most Influential People by Time.
@@ -61,6 +63,7 @@ Answer
 ## Home work 2
 
 Assume a telecommunications company like Telstra or Optus. Data is collected by the business.
+
  1. In your group, discuss and make a list of the kind of data you think could likely be collected.
  2. Write down an ER diagram for the data and a set of database tables.
  3. How could this data be used to better understand the business processes?
@@ -69,4 +72,5 @@ Assume a telecommunications company like Telstra or Optus. Data is collected by 
 
 
 Answer
+
  1. Personal information,such as name, phone number, gender. location, Frequent contact person, context about buy something, where you go
