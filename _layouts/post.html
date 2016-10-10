@@ -10,7 +10,7 @@ layout: default
 
     <center><div class="post-title" itemprop="name headline">{{ page.title }}</div>
 
-		<div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="{{ page.date | date_to_string }}" itemprop="datePublished">{{ page.date | date: "%b %-d %Y" }}</time>
+		<div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="{{ page.date | date: "%Y/%m/%d" }}" itemprop="datePublished">{{ page.date | date: "%b %-d %Y" }}</time>
 
 		{% if page.author %}&nbsp;&nbsp;•&nbsp;&nbsp;<i class="fa fa-user-secret"></i> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span>
         {% endif %}

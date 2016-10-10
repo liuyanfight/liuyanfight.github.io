@@ -4,7 +4,7 @@ title: "来悉尼一个月了"
 subtitle: "时间过得很快"
 date: 2016-10-03
 author: L
-category: Everyday
+category: 日常
 tags: Everyday Sydney
 finished: true
 ---
