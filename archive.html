@@ -3,6 +3,8 @@ layout: page
 title: Archive
 subtitle: As years flow by. 世界这么大，我想去看看。
 permalink: /archive/
+paginate: 5
+paginate_path: "archive/page:num/"
 ---
 
 	{% assign is_first = true %}
@@ -24,9 +26,12 @@ permalink: /archive/
 	{% assign is_first = true %}
 	{% endif %}
 
+
+	{% if post.categories != site.categories['miniblog'] %}
 	<ul>
 		<li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a><span class="date"> - {{ post.date | date: "%Y/%m/%d" }}</span>
 		</li>
 	</ul>
+  {% endif %}
 
 	{% endfor %}
