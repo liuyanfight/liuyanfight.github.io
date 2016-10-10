@@ -27,7 +27,7 @@ permalink: /miniblog/
 {% for category in site.categories %}
 {% capture cat %}{{ category | first }}{% endcapture %}
 
-{% if category == 'miniblog' %}
+{% if site.categories[cat] == 'miniblog' %}
 <ul>
   <li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a><span class="date"> - {{ post.date | date: "%Y/%m/%d" }}</span><br />{{ post.excerpt }}
   </li>
