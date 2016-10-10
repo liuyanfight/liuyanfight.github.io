@@ -27,7 +27,7 @@ paginate_path: "archive/page:num/"
 	{% endif %}
 
 
-	{% if post != site.categories['miniblog'] %}
+	{% if post.tags != site.tags['miniblog'] %}
 	<ul>
 		<li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a><span class="date"> - {{ post.date | date: "%Y/%m/%d" }}</span>
 		</li>

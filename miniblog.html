@@ -23,10 +23,11 @@ permalink: /miniblog/
 {% assign is_first = true %}
 {% endif %}
 
-
+<fieldset>
 <ul>
-  <li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a><span class="date"> - {{ post.date | date: "%Y/%m/%d" }}</span><br />{{ post.excerpt }}
+  <li><span class="date"> - {{ post.date | date: "%Y/%m/%d" }}</span><br />{{ post.excerpt }}
   </li>
 </ul>
+</fieldset>
 
 {% endfor %}
