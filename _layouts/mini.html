@@ -8,9 +8,9 @@ layout: default
     </script>
 
     <center>
-        <div class="post-title" itemprop="name headline">{{ site.date | date: " %Y/%m/%d %H:%M " }}</div>
+        <div class="post-title" itemprop="name headline">Miniblog {{ site.time | date: " %Y/%m/%d %H:%M " }}</div>
 
-        <div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="{{ site.date | date: " %Y/%m/%d %H:%M " }}" itemprop="datePublished">{{ page.date | date: "%Y/%m/%d  %H:%M" }}</time>
+        <div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="{{ site.time | date: " %Y/%m/%d %H:%M " }}" itemprop="datePublished">{{ site.time | date: "%Y/%m/%d  %H:%M" }}</time>
         <!-- {% if page.author %} -->
         &nbsp;&nbsp;•&nbsp;&nbsp;<i class="fa fa-user-secret"></i>
         <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">L</span>
