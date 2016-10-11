@@ -5,8 +5,10 @@ email: liuyanfight@foxmail.com # your email address
 description: This is your life and it's ending one minute at a time. # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://liuyanfight.github.io" # the base hostname & protocol for your site
-paginate: 1
-paginate_path: "miniblog/page/:num"
+gems: [jekyll-paginate]
+paginate: 5
+paginate_path: "page:num"
+
 
 twitter_username: liuyanfight # your Twitter username
 github_username: liuyanfight # your Github username
