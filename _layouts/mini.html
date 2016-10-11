@@ -8,9 +8,10 @@ layout: default
     </script>
 
     <center>
-        <div class="post-title" itemprop="name headline">{{ site.time| date: "%Y/%m/%d %H:%M" }}</div>
+        <div class="post-title" itemprop="name headline">{{ page.title }}</div>
 
-        <div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="{{ page.date | date: " %Y/%m/%d %H:%M " }}" itemprop="datePublished">{{ site.time | date: "%Y/%m/%d  %H:%M" }}</time> {% if page.author %}&nbsp;&nbsp;•&nbsp;&nbsp;<i class="fa fa-user-secret"></i>            <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">L</span> {% endif %}
+        <div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="{{ page.date | date: " %Y/%m/%d %H:%M " }}" itemprop="datePublished">{{ page.date | date: "%Y/%m/%d  %H:%M" }}</time>
+        {% if page.author %}&nbsp;&nbsp;•&nbsp;&nbsp;<i class="fa fa-user-secret"></i>            <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">L</span> {% endif %}
             <!-- <br> -->
             <!-- <i class="fa fa-eye"></i> <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-pulse"></i></span>˚C</span> -->
         </div>
@@ -20,7 +21,13 @@ layout: default
 
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
     <div class="post-content">
+      <center>
+    {% if page.subtitle %}
+    <p>{{ page.subtitle }}</p>
+    {% endif %}
+      </center>
         <!-- <h2>Directory</h2> -->
+
     </div>
 
     <div id="category"></div>
