@@ -1,72 +1,55 @@
----
-layout: default
----
+--- layout: default ---
 
-  <header class="post-header">
+<header class="post-header">
 
-    <script type="text/javascript" async
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
     </script>
 
-    <center><div class="post-title" itemprop="name headline">{{ site.time| date: "YYYY-MM-DD HH:MM" }}</div>
+    <center>
+        <div class="post-title" itemprop="name headline">{{ site.time| date: "%Y/%m/%d %H:%M" }}</div>
 
-		<div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="{{ page.date | date: "%Y/%m/%d  %HH:%MM" }}" itemprop="datePublished">{{ site.time | date: "%Y/%m/%d  %HH:%MM" }}</time>
-
-		{% if page.author %}&nbsp;&nbsp;•&nbsp;&nbsp;<i class="fa fa-user-secret"></i> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">L</span>
-        {% endif %}
-		<!-- <br> -->
-		<!-- <i class="fa fa-eye"></i> <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-pulse"></i></span>˚C</span> -->
-	</div>
-
+        <div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="{{ page.date | date: " %Y/%m/%d %HH:%MM " }}" itemprop="datePublished">{{ site.time | date: "%Y/%m/%d  %HH:%MM" }}</time> {% if page.author %}&nbsp;&nbsp;•&nbsp;&nbsp;<i class="fa fa-user-secret"></i>            <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">L</span> {% endif %}
+            <!-- <br> -->
+            <!-- <i class="fa fa-eye"></i> <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-pulse"></i></span>˚C</span> -->
+        </div>
     </center>
 
 </header>
 
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-<div class="post-content">
+    <div class="post-content">
+        <!-- <h2>Directory</h2> -->
+    </div>
+
+    <div id="category">111111111111111</div>
+
+    <div class="post-content" itemprop="articleBody">
+        {{ content }}
+    </div>
+
+    <div>
+        {% if page.finished %}
+        <div class="eof"></div>
+        {% else %}
+        <div class="eof"></div>
+        {% endif %}
+    </div>
+
     <center>
-	{% if page.subtitle %}
-	<p>{{ page.subtitle }}</p>
-	{% endif %}
+        <div class="post-tags">
+            {% if page.tags %} {% for tag in page.tags %}
+            <a class="post-tags-item" href="{{ site.url }}{{ site.baseurl }}/tags/">{{ tag }}</a> {% endfor %} {% endif %}
+        </div>
     </center>
-	<!-- <h2>Directory</h2> -->
-</div>
 
-<div id="category"></div>
+    <div class="post-recent">
+        {% if page.previous %}
+        <p>上一篇 <a href="{{ page.previous.url | prepend: site.baseurl }}">{{ page.previous.title }}</a></p>
+        {% endif %} {% if page.next %}
+        <p>下一篇 <a href="{{ page.next.url | prepend: site.baseurl }}">{{ page.next.title }}</a></p>
+        {% endif %}
+    </div>
 
-<div class="post-content" itemprop="articleBody">
-    {{ content }}
-</div>
-
-<div>
-	{% if page.finished %}
-	<div class="eof"></div>
-	{% else %}
-	<div class="tbc"></div>
-	{% endif %}
-</div>
-
-<center>
-<div class="post-tags">
-{% if page.tags %}
-    {% for tag in page.tags %}
-  <a class="post-tags-item" href="{{ site.url }}{{ site.baseurl }}/tags/">{{ tag }}</a>
-    {% endfor %}
-{% endif %}
-</div>
-</center>
-
-<div class="post-recent">
-  {% if page.previous %}
-    <p>上一篇 <a href="{{ page.previous.url | prepend: site.baseurl }}">{{ page.previous.title }}</a></p>
-  {% endif %}
-  {% if page.next %}
-    <p>下一篇 <a href="{{ page.next.url | prepend: site.baseurl }}">{{ page.next.title }}</a></p>
-  {% endif %}
-</div>
-
-{% include share.html %}
-
-{% include disqus.html %}
+    {% include share.html %} {% include disqus.html %}
 
 </article>
