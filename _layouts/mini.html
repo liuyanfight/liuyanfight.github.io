@@ -8,7 +8,22 @@
     <center>
         <div class="post-title" itemprop="name headline">{{ site.time| date: "%Y/%m/%d %H:%M" }}</div>
 
-        <div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="{{ page.date | date: " %Y/%m/%d %HH:%MM " }}" itemprop="datePublished">{{ site.time | date: "%Y/%m/%d  %HH:%MM" }}</time> {% if page.author %}&nbsp;&nbsp;•&nbsp;&nbsp;<i class="fa fa-user-secret"></i>            <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">L</span> {% endif %}
+        <div class="post-meta">
+          <i class="fa fa-calendar-o"></i>
+          <time datetime="{{ page.date | date: " %Y/%m/%d %H:%M " }}" itemprop="datePublished">{{ site.time | date: "%Y/%m/%d  %HH:%MM" }}</time>
+
+          &nbsp;&nbsp;•&nbsp;&nbsp;
+          <i class="fa fa-user-secret"></i>
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <span itemprop="name">L</span>
+
+          {% unless page.categories %}
+            {{page.categories = site.categories['miniblog']}}
+          {% endunless %}
+
+          {% unless page.tags %}
+            {{page.categories = site.tags['miniblog']}}
+          {% endunless %}
             <!-- <br> -->
             <!-- <i class="fa fa-eye"></i> <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-pulse"></i></span>˚C</span> -->
         </div>
