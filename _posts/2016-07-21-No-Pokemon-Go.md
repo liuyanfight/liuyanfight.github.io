@@ -2,7 +2,6 @@
 layout: post
 title:  "No Pokemon Go"
 date: 2016-07-21
-author: L
 categories: 日常
 tags: Everyday
 finished: true
