@@ -26,12 +26,11 @@ paginate_path: "archive/page:num/"
 	{% assign is_first = true %}
 	{% endif %}
 
-
-	{% if post.tags != site.tags['miniblog'] %}
+	{% unless post.categories contains "miniblog" %}
 	<ul>
 		<li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a><span class="date"> - {{ post.date | date: "%Y/%m/%d" }}</span>
 		</li>
 	</ul>
-  {% endif %}
+  {% endunless %}
 
 	{% endfor %}
