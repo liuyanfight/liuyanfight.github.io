@@ -26,9 +26,10 @@ permalink: /miniblog/
 
 <fieldset>
 <ul>
-  <li><span class="date"> - {{ post.date | date: "%Y/%m/%d" }}</span><br />{{ post.content }}
+  <li><span class="date"> - <a href="{{ post.url | prepend: site.baseurl }}">{{ post.date | date: "%Y/%m/%d" }}</a></span><br />{{ post.content }}
   </li>
 </ul>
 </fieldset>
+<br />
 
 {% endfor %}

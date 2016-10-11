@@ -8,9 +8,9 @@ layout: default
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
     </script>
 
-    <center><div class="post-title" itemprop="name headline">{{ site.time }}</div>
+    <center><div class="post-title" itemprop="name headline">{{ site.time| date: "%Y/%m/%d %HH:%MM" }}</div>
 
-		<div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="{{ page.date | date: "%Y/%m/%d" }}" itemprop="datePublished">{{ site.time }}</time>
+		<div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="{{ page.date | date: "%Y/%m/%d  %HH:%MM" }}" itemprop="datePublished">{{ site.time | date: "%Y/%m/%d  %HH:%MM" }}</time>
 
 		{% if page.author %}&nbsp;&nbsp;•&nbsp;&nbsp;<i class="fa fa-user-secret"></i> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">L</span>
         {% endif %}
