@@ -2,9 +2,9 @@
 layout: page
 title: Miniblog
 subtitle: 说说我的世界.
-permalink:
+permalink:/miniblog/
 paginate: 5
-paginate_path: "miniblog/page:num"
+paginate_path: "miniblog/page-:num"
 ---
 {% assign is_first = true %}
 {% for post in site.categories['miniblog'] %}
