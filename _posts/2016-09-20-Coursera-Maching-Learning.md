@@ -79,17 +79,17 @@ Programming Exercises 1
 2.2 Gradient Descent
 2.2.3 Computing the cost J(θ)
 
-J = (1 / (2 * m)) * sum(((X * theta - y).^2));  
+`J = (1 / (2 * m)) * sum(((X * theta - y).^2))`  
 2.2.4 Gradient descent
 
-```python
-% 1st  
-theta = theta - alpha * ( 1 / m) * (X' * (X * theta - y));  
-% 2nd  
-%temp1 = theta(1) - alpha * ( 1 / m) * sum(X * theta - y);  
-%temp2 = theta(2) - alpha * ( 1 / m) * sum((X(:,2) .* (X * theta - y)));  
-%theta = [temp1;temp2];  
-```
+
+  % 1st  
+  theta = theta - alpha * ( 1 / m) * (X' * (X * theta - y));  
+  % 2nd  
+  %temp1 = theta(1) - alpha * ( 1 / m) * sum(X * theta - y);  
+  %temp2 = theta(2) - alpha * ( 1 / m) * sum((X(:,2) .* (X * theta - y)));  
+  %theta = [temp1;temp2];  
+
 
 3 Linear regression with multiple variables
 3.1 Feature Normalization

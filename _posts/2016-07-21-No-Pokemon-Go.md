@@ -2,7 +2,7 @@
 layout: post
 title:  "No Pokemon Go"
 date: 2016-07-21
-categories: 日常
+categories: Everyday
 tags: Everyday
 location: 杭州, 浙江
 finished: true
