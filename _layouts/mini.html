@@ -11,8 +11,7 @@ layout: default
     <center>
         <div class="post-title" itemprop="name headline">{{ page.title }}</div>
 
-        {{ page.date = site.time}}
-        <div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="{{ page.date | date: "%Y/%m/%d %X %A" }}" itemprop="datePublished">{{ page.date | date: "%Y/%m/%d %X %A" }}    </time>
+        <div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="{{ page.date | date: "%Y/%m/%d %R %A" }}" itemprop="datePublished">{{ page.date | date: "%Y/%m/%d %R %A" }}    </time>
         {% if page.location %}
           &nbsp;&nbsp;•&nbsp;&nbsp;
           <i class="fa fa-map-marker"></i>
