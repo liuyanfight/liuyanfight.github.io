@@ -79,10 +79,10 @@ Programming Exercises 1
 2.2 Gradient Descent
 2.2.3 Computing the cost J(θ)
 
-```
 J = (1 / (2 * m)) * sum(((X * theta - y).^2));  
 2.2.4 Gradient descent
-[plain] view plain copy
+
+```python
 % 1st  
 theta = theta - alpha * ( 1 / m) * (X' * (X * theta - y));  
 % 2nd  
