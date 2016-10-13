@@ -26,8 +26,14 @@ permalink: /miniblog/
 
 <fieldset>
 <ul>
-  <li><span class="date"> - <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title}}</a></span><br />{{ post.content }}
-  </li>
+    <span class="date">
+      <i class="fa fa-comment-o" aria-hidden="true"></i>
+      <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title}}</a>
+      &nbsp;&nbsp;&nbsp; <i class="fa fa-map-marker"></i>
+      {{ page.location }}
+    </span>
+    <br />
+    {{ post.content }}
 </ul>
 </fieldset>
 <br />
