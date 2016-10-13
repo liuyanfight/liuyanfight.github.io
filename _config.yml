@@ -19,4 +19,6 @@ skillstree: false # turn on or off the skills tree in about page
 # Build settings
 permalink: none
 markdown: kramdown
-highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
