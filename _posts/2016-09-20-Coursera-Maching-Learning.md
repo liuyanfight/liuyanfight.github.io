@@ -91,7 +91,7 @@ theta = theta - alpha * ( 1 / m) * (X' * (X * theta - y));
 %theta = [temp1;temp2];  
 ~~~
 
-~~~
+~~~html
 <div class="post-header-container>
   <div class="scrim {% if page.cover %}has-cover{% endif %}">
     <header class="post-header">
