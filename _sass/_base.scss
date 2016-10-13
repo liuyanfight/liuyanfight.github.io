@@ -181,11 +181,15 @@ hr {
  */
 pre,
 code {
-    font-size: 15px;
-    border: 1px solid #f8f8f8;
+    // font-size: 15px;
+    // border: 1px solid #f8f8f8;
     border-radius: 3px;
-    background-color: #f8f8f8;
-    color: #27badf;
+    // background-color: #f8f8f8;
+    // color: #27badf;
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
 }
 
 code {
