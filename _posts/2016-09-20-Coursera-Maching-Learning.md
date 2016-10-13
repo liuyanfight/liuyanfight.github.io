@@ -78,7 +78,8 @@ Programming Exercises 1
 2 Linear regression with one variable
 2.2 Gradient Descent
 2.2.3 Computing the cost J(θ)
-[html] view plain copy
+
+```
 J = (1 / (2 * m)) * sum(((X * theta - y).^2));  
 2.2.4 Gradient descent
 [plain] view plain copy
@@ -90,7 +91,8 @@ theta = theta - alpha * ( 1 / m) * (X' * (X * theta - y));
 %theta = [temp1;temp2];  
 3 Linear regression with multiple variables
 3.1 Feature Normalization
-[plain] view plain copy
+```
+
 mu = mean(X);  
 
 sigma = std(X);  
