@@ -7,10 +7,12 @@ layout: default
     <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
     </script>
 
+    <script src="{{ site.baseurl }}/js/index.js"></script>
+
     <center>
         <div class="post-title" itemprop="name headline">{{ page.title }}</div>
 
-        <div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="{{ page.date | date: "%Y/%m/%d %a %X" }}" itemprop="datePublished">{{ page.date | date: "%Y/%m/%d %a %X" }}    </time>
+        <div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="{{ page.date | date: "%Y/%m/%d %X %A" }}" itemprop="datePublished">{{ page.date = site.time | date: "%Y/%m/%d %X %a" }}    </time>
         {% if page.location %}
           &nbsp;&nbsp;•&nbsp;&nbsp;
           <i class="fa fa-map-marker"></i>

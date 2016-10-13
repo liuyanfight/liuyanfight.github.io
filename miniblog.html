@@ -5,6 +5,7 @@ subtitle: 说说我的世界.
 permalink: /miniblog/
 ---
 
+
 {% assign is_first = true %}
 {% for post in site.categories['miniblog'] %}
 
@@ -12,7 +13,7 @@ permalink: /miniblog/
 {{ post.date | date: "%Y-%m" }}
 {% endcapture %}
 {% if is_first %}
-## {{ this_year }}
+<h2>{{ this_year }}</h2>
 {% endif %}
 
 {% capture next_year %}

@@ -6,6 +6,8 @@ description: This is your life and it's ending one minute at a time. # this mean
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://liuyanfight.github.io" # the base hostname & protocol for your site
 
+timezone: Asia/Shanghai
+
 twitter_username: liuyanfight # your Twitter username
 github_username: liuyanfight # your Github username
 disqus_username: liuyanfight # your disqus username
