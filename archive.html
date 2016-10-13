@@ -29,8 +29,11 @@ permalink: /archive/
 		<i class="fa fa-file-archive-o" aria-hidden="true"></i>
 		<a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
 		<span class="date"> - {{ post.date | date: "%Y/%m/%d" }}
-		&nbsp;&nbsp;&nbsp; <i class="fa fa-map-marker"></i>
-		{{ page.location }}
+		{% if page.location %}
+			&nbsp;&nbsp;•&nbsp;&nbsp;
+			<i class="fa fa-map-marker"></i>
+			{{ post.location }}
+		{% endif %}
 		</span>
 	</ul>
   {% endunless %}
