@@ -89,9 +89,11 @@ theta = theta - alpha * ( 1 / m) * (X' * (X * theta - y));
 %temp1 = theta(1) - alpha * ( 1 / m) * sum(X * theta - y);  
 %temp2 = theta(2) - alpha * ( 1 / m) * sum((X(:,2) .* (X * theta - y)));  
 %theta = [temp1;temp2];  
+```
+
 3 Linear regression with multiple variables
 3.1 Feature Normalization
-```
+
 
 mu = mean(X);  
 
