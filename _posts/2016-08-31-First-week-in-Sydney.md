@@ -4,6 +4,7 @@ title:  "初到悉尼"
 date:   2016-08-31
 categories: 日常
 tags: Everyday Sydney
+location: Sydney, NSW, AUS
 finished: true
 ---
 ## 风景

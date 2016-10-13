@@ -11,8 +11,9 @@ layout: default
         <div class="post-title" itemprop="name headline">{{ page.title }}</div>
 
         <div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="{{ page.date | date: "%Y/%m/%d" }}" itemprop="datePublished">{{ page.date | date: "%Y/%m/%d" }}    </time>
+        &nbsp;&nbsp;&nbsp;
         <i class="fa fa-map-marker"></i>
-        <span> &nbsp;&nbsp;&nbsp; {{ page.location }}</span>
+        <span>{{ page.location }}</span>
         </div>
     </center>
 

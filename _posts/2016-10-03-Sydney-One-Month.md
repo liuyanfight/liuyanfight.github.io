@@ -6,6 +6,7 @@ date: 2016-10-03
 author: L
 category: 日常
 tags: Everyday Sydney
+location: Sydney, NSW, AUS
 finished: true
 ---
 

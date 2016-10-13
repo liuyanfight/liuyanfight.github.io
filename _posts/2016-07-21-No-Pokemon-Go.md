@@ -4,6 +4,7 @@ title:  "No Pokemon Go"
 date: 2016-07-21
 categories: 日常
 tags: Everyday
+location: 杭州, 浙江
 finished: true
 ---
 
