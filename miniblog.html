@@ -30,7 +30,7 @@ permalink: /miniblog/
     <span class="date">
       <i class="fa fa-comment-o" aria-hidden="true"></i>
       <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title}}</a>
-      {% if page.location %}
+      {% if post.location %}
   			&nbsp;&nbsp;•&nbsp;&nbsp;
   			<i class="fa fa-map-marker"></i>
   			{{ post.location }}
