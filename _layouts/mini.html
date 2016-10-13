@@ -10,7 +10,7 @@ layout: default
     <center>
         <div class="post-title" itemprop="name headline">{{ page.title }}</div>
 
-        <div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="{{ page.date | date: "%Y/%m/%d" }}" itemprop="datePublished">{{ page.date | date: "%Y/%m/%d %W" }}    </time>
+        <div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="{{ page.date | date: "%Y/%m/%d %a %X" }}" itemprop="datePublished">{{ page.date | date: "%Y/%m/%d %a %X" }}    </time>
         {% if page.location %}
           &nbsp;&nbsp;•&nbsp;&nbsp;
           <i class="fa fa-map-marker"></i>
@@ -63,7 +63,5 @@ layout: default
 
     {% include share.html %}
     {% include disqus.html %}
-
-    <script src="{{ site.baseurl }}/js/main.js"></script>
 
 </article>
