@@ -64,7 +64,8 @@ layout: default
           <i class="fa fa-file-archive-o" aria-hidden="true"></i>
           {% endif %}
           <a href="{{ page.previous.url | prepend: site.baseurl }}">{{ page.previous.title }}</a></p>
-        {% endif %} {% if page.next %}
+        {% endif %}
+        {% if page.next %}
         <p>下一篇
           &nbsp;
           {% if page.next.categories contains 'miniblog' %}
