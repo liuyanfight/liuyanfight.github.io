@@ -91,6 +91,17 @@ theta = theta - alpha * ( 1 / m) * (X' * (X * theta - y));
 %theta = [temp1;temp2];  
 ~~~
 
+~~~
+<div class="post-header-container>
+  <div class="scrim {% if page.cover %}has-cover{% endif %}">
+    <header class="post-header">
+        <h1 class="title">{{ page.title }}</h1>
+        <p class="info">by <strong>{{ page.author }}</strong></p>
+    </header>
+    </div>
+</div>
+~~~
+
 3 Linear regression with multiple variables
 3.1 Feature Normalization
 
