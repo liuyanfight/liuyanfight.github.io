@@ -109,12 +109,15 @@ __分布函数与概率密度函数__
 > 假设有一元随机变量$X$。   
 如果是连续型随机变量，那么可以定义它的 __概率密度函数__ （probability density function, PDF），有时简称为密度函数。  
 我们用PDF在某一区间上的积分来刻画随机变量落在这个区间中的概率，即。
+
 $$
 Pr(a\le X\le b)=\int ^b_af_X(x)dx
 $$  
+
 如果$X$是离散型随机变量，那么可以定义它的 __概率质量函数__（probability mass function, PMF）$f_X(x)$。    
 与连续型随机变量不同，这里的PMF其实就是高中所学的离散型随机变量的分布律，即$f_X(x)=Pr(X-x)$。  
 比如对于掷一枚均匀硬币，如果正面令$X=1$，如果反面令$X=0$，那么它的PMF就是。  
+
 $$
 f_X(x) =
 \begin{cases}
@@ -122,11 +125,13 @@ f_X(x) =
 0, & \text{if n $\notin$ {0,1}} \\
 \end{cases}
 $$  
+
 不管$X$是什么类型（连续/离散/其他）的随机变量，都可以定义它的 __累积分布函数__（cumulative distribution function ,CDF），有时简称为 __分布函数__ 。  
 CDF的定义是：$F_X(x)=Pr(X\le x)$。  
 对于连续型随机变量，显然有$F_X(x)=Pr(X \le x)=\int ^x_{-\infty} f_X(t)dt$，那么CDF就是PDF的积分，PDF就是CDF的导数。  
 对于离散型随机变量，其CDF是阶梯状的分段函数，比如举例中的掷硬币随机变量，它的CDF如下
 。  
+
 $$
 F_X(x) = Pr(X \le x)=
 \begin{cases}
@@ -135,6 +140,7 @@ F_X(x) = Pr(X \le x)=
 1. & \text{if x $\ge$ 1}
 \end{cases}
 $$  
+
 另外CDF的单调递增（不减）性质可以由它的定义和概率的性质推出，因为对任意$x_1<x_2$，总有$Pr(X \le x_1)\le Pr(X\le x_2)$，所以$F_X(x_1)\le F_X(x_2)$。
 
 
@@ -143,10 +149,13 @@ $$
 __期望与标准差__  
 
 对于一个随机变量$X$，它的 _期望_ (Espectation)
+
 $$
 E(X)=\mu
 $$  
+
 此时，它的 _标准差_(Standart Deviation)为
+
 $$
 \sigma = \sqrt{E[(X-\mu)^2]}
 $$
