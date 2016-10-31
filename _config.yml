@@ -12,7 +12,7 @@ twitter_username: liuyanfight # your Twitter username
 github_username: liuyanfight # your Github username
 disqus_username: liuyanfight # your disqus username
 
-google-analytics:  # add it if you have one
+google-analytics: UA-86494680-1  # add it if you have one-86494680-1
 
 skillstree: false # turn on or off the skills tree in about page
 
