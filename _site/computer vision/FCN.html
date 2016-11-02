@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSS -->
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://liuyanfight.github.io/computer%20vision/FCN.html">
+  <link rel="alternate" type="application/rss+xml" title="My Blog" href="https://liuyanfight.github.io/feed.xml">
+
+<!-- Google font -->
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto Sans">
+
+<!-- font awesome -->
+
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+
+<!-- 公式 -->
+<!-- <script type="text/javascript" async
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script> -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true,
+    processEnvironments: true
+  }
+});
+</script>
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+<!-- Google Analytics -->
+<!-- <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)
+     },i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-86494680-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+-->
+
+</head>
+
+
+  
+    <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+  ga('create', 'UA-86494680-1', 'auto');
+  ga('send', 'pageview');
+    
+	</script>
+
+
+  
+
+  
+
+  </head>
+
+  <body>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>全卷积网络</title>
+  <meta name="description" content="  看到脑门疼，存了5$打印出来看，周六要交一个report这篇文章讲的很好。卷积神经网络（CNN）：图像级语义理解的利器全卷积神经网络(FCN)是基于CNN提出的一种新方法。通常CNN网络在卷积层之后会接上若干个全连接层, 将卷积层产生的特征图（feature map）映射成一个固定长度的特征向量。通常适合于图...">
+</head>
+
+
+  <div class="wrapper">
+          <header class="post-header">
+
+    <center><div class="post-title" itemprop="name headline">全卷积网络</div>
+
+		<div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="2016/09/15 00:00:00 Thursday" itemprop="datePublished">2016/09/15 Thursday</time>
+
+		&nbsp;&nbsp;•&nbsp;&nbsp;<i class="fa fa-user-secret"></i> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">page.author</span>
+    
+    <br />
+    
+		<!-- <br> -->
+		<!-- <i class="fa fa-eye"></i> <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-pulse"></i></span>˚C</span> -->
+	</div>
+
+    </center>
+
+</header>
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<div class="post-content">
+    <center>
+	
+	<p>真他妈的难</p>
+	
+    </center>
+	<h2>Directory</h2>
+</div>
+
+<div id="category"></div>
+
+<div class="post-content" itemprop="articleBody">
+    <blockquote>
+  <p>看到脑门疼，存了5$打印出来看，周六要交一个report</p>
+</blockquote>
+
+<p>这篇文章讲的很好。<a href="https://mp.weixin.qq.com/s?__biz=MzI1NTE4NTUwOQ==&amp;mid=2650324665&amp;idx=1&amp;sn=3022e7e75a4bad0acdde36fe3edf565e">卷积神经网络（CNN）：图像级语义理解的利器</a></p>
+
+<p>全卷积神经网络(FCN)是基于CNN提出的一种新方法。通常CNN网络在卷积层之后会接上若干个全连接层, 将卷积层产生的特征图（feature map）映射成一个固定长度的特征向量。通常适合于图像级的__分类__和__回归__任务。即最终的输出都表示为数值class score。</p>
+
+<p>与物体分类要建立图像级理解任务不同的是，有些应用场景下要得到图像像素级别的分类结果，例如：</p>
+
+<ul>
+  <li>
+    <p>语义级别图像分割(semantic image segmentation), 最终要得到对应位置每个像素的分类结果。其目的是将图像分割为若干个区域, 使得语义相同的像素被分割在同意区域内。
+<img src="/img/blog/20160915/1.png" alt="语义分割" /></p>
+  </li>
+  <li>
+    <p>边缘检测, 相当于对每个像素做一次二分类（是边缘或不是边缘）。这个很常见。</p>
+  </li>
+</ul>
+
+<p>FCN进行像素级的分类来解决semantic segmentation问题。FCN能够端到端(end to end)得到每个像素的预测结果。他可以接受任意大小的输入图像，采用反卷积层对最后一个卷积层的feature map进行上采样, 使它恢复到输入图像相同的尺寸，从而可以对每个像素都产生了一个预测, 同时也保留了原始输入图像中的空间信息, 最后在上采样的特征图上进行逐像素分类。</p>
+
+<p>还有一篇blog，讲的是对论文的理解也值得一看<a href="http://blog.csdn.net/happyer88/article/details/47205839">论文笔记《Fully Convolutional Networks for Semantic Segmentation》</a></p>
+
+</div>
+
+<div>
+	
+	<div class="eof"></div>
+	
+</div>
+
+<center>
+<div class="post-tags">
+
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">学习</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">CV</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">DL</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">Sydney</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">FCN</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">UTS</a>
+    
+
+</div>
+</center>
+
+<div class="post-recent">
+  
+    <p>上一篇
+    &nbsp;
+    
+    <i class="fa fa-file-archive-o" aria-hidden="true"></i>
+    
+    <a href="/computer%20vision/CNN-CS231n.html">从神经网络到卷积神经网络的了解</a></p>
+  
+  
+    <p>下一篇
+      &nbsp;
+      
+      <i class="fa fa-file-archive-o" aria-hidden="true"></i>
+      
+      <a href="/everyday/Jobs.html">毕业季求职</a></p>
+  
+</div>
+
+<div class="share">
+    <p>Share this post with: </p>
+	<a href="https://twitter.com/intent/tweet?text=全卷积网络@liuyanfight&amp;url=https://liuyanfight.github.io/computer%20vision/FCN.html" class="twitter-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://www.facebook.com/sharer/sharer.php?u=https://liuyanfight.github.io/computer%20vision/FCN.html" class="facebook-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://plus.google.com/share?url=https://liuyanfight.github.io/computer%20vision/FCN.html" class="googleplus-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+</div>
+
+
+<div id="disqus_thread"></div>
+
+
+<script type="text/javascript">
+	    /* * * CONFIGURATION VARIABLES * * */
+		var disqus_shortname = "liuyanfight";
+		var disqus_identifier = "/computer%20vision/FCN";
+		var disqus_url = "https://liuyanfight.github.io/computer%20vision/FCN.html";
+		(function() {
+			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+
+ 
+</div>
+
+
+</article>
+
+  </div>
+
+</body>
+
+<foot>
+
+    <foot>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Derictory -->
+
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
+
+<!-- Hit analytics -->
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- Directory -->
+
+<script src="/js/main.js"></script>
+
+</foot>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <center>
+
+		<p><a class="link" href="/archive/">Archive</a> /
+    <a class="link" href="/miniblog/">Miniblog</a> /
+    <a class="link" href="/calendar/">Calendar</a> /
+    <a class="link" href="/category/">Category</a> /
+		<a class="link" href="/tags/">Tags</a> /
+		<a class="link" href="/project/">Project</a> /
+    <a class="link" href="/about/">About</a>
+        </p>
+
+        <span><script>document.write(new Date().getFullYear());</script></span>
+        <span>&copy;</span>
+
+		<a class="link" href="">L</a>
+		<br>
+    </center>
+
+  </div>
+
+</footer>
+
+    
+</foot>
+
+</html>

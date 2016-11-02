@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSS -->
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://liuyanfight.github.io/machine%20learning/Coursera-Maching-Learning.html">
+  <link rel="alternate" type="application/rss+xml" title="My Blog" href="https://liuyanfight.github.io/feed.xml">
+
+<!-- Google font -->
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto Sans">
+
+<!-- font awesome -->
+
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+
+<!-- 公式 -->
+<!-- <script type="text/javascript" async
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script> -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true,
+    processEnvironments: true
+  }
+});
+</script>
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+<!-- Google Analytics -->
+<!-- <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)
+     },i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-86494680-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+-->
+
+</head>
+
+
+  
+    <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+  ga('create', 'UA-86494680-1', 'auto');
+  ga('send', 'pageview');
+    
+	</script>
+
+
+  
+
+  
+
+  </head>
+
+  <body>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Andrew Ng 的 机器学习课程</title>
+  <meta name="description" content="  上一次学习这个课程是在2014-08-15左右，刚研究生的时候，现在我已经快要研究生毕业了，说实话，这两年除了年纪长了之外没有什么长进，想想也是可悲。上一次没有坚持到最后，这次要加油。  现在学习课程材料真的超级齐全。Introduce### What is Machine Learning?Machine ...">
+</head>
+
+
+  <div class="wrapper">
+          <header class="post-header">
+
+    <center><div class="post-title" itemprop="name headline">Andrew Ng 的 机器学习课程</div>
+
+		<div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="2016/09/20 00:00:00 Tuesday" itemprop="datePublished">2016/09/20 Tuesday</time>
+
+		&nbsp;&nbsp;•&nbsp;&nbsp;<i class="fa fa-user-secret"></i> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">page.author</span>
+    
+    <br />
+    
+		<!-- <br> -->
+		<!-- <i class="fa fa-eye"></i> <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-pulse"></i></span>˚C</span> -->
+	</div>
+
+    </center>
+
+</header>
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<div class="post-content">
+    <center>
+	
+	<p>Again</p>
+	
+    </center>
+	<h2>Directory</h2>
+</div>
+
+<div id="category"></div>
+
+<div class="post-content" itemprop="articleBody">
+    <blockquote>
+  <p>上一次学习这个课程是在2014-08-15左右，刚研究生的时候，现在我已经快要研究生毕业了，说实话，这两年除了年纪长了之外没有什么长进，想想也是可悲。上一次没有坚持到最后，这次要加油。</p>
+</blockquote>
+
+<blockquote>
+  <p>现在学习课程材料真的超级齐全。</p>
+</blockquote>
+
+<h2 id="introduce">Introduce</h2>
+<p>### What is Machine Learning?</p>
+
+<p><strong>Machine Learning</strong> 的定义：</p>
+
+<ul>
+  <li>Arthur Samuel：Field of study that give computers the ability to learn without being explicity programed.</li>
+  <li>Mitchell ：A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.</li>
+</ul>
+
+<p>机器学习可以视为解决两个问题</p>
+
+<ul>
+  <li>supervised learning,</li>
+  <li>unsupervised learning.</li>
+</ul>
+
+<h3 id="supervised-learning">Supervised learning</h3>
+
+<p>监督性学习就是使用带有标签的数据集来学习。监督性学习问题可以被分为 “regression”（回归） 和 “classification”（分类）两种。</p>
+
+<p>回归问题是指预测的结果是连续的输出。分类问题预测的结果是不连续的。</p>
+
+<h3 id="unsupervised-learning">Unsupervised Learning</h3>
+
+<p>非监督性学习是指不知道结果的情况下探索数据的结构性质或是相似性（即不包含label信息）。非监督性学习问题严格上说没有结果来比较。比如聚类问题(Clustering),鸡尾酒会问题(Cocktail Party Problem)。</p>
+
+<h3 id="linear-regression-with-one-variable">Linear Regression with One Variable</h3>
+
+<p>一个变量的线性回归算法也称为univariate linear regression。只含有一个特征/输入变量来预测一个单独的输出。</p>
+
+<p>hypothesis function:</p>
+
+<script type="math/tex; mode=display">\hat{y} = h_\theta(x) = \theta_0 + \theta_1 x</script>
+
+<h3 id="cost-function">Cost Function</h3>
+
+<p>也称为平方误差(Squared error function),平均平方误差(Mean squared error),使用损失函数来衡量预测函数的正确率。</p>
+
+<script type="math/tex; mode=display">J(\theta_0, \theta_1) = \dfrac {1}{2m} \displaystyle \sum _{i=1}^m \left ( \hat{y}_{i}- y_{i} \right)^2  = \dfrac {1}{2m} \displaystyle \sum _{i=1}^m \left (h_\theta (x_{i}) - y_{i} \right)^2</script>
+
+<p><img src="/img/blog/20160920/1.png" alt="Cost Function" />
+<img src="/img/blog/20160920/2.png" alt="Cost Function" /></p>
+
+<p>我们的目标就是找出使得误差最小的函数。</p>
+
+<h3 id="gradient-descent">Gradient Descent</h3>
+
+<p>梯度下降是一个用来求函数最小值的算法。</p>
+
+<p>Multiple features (variables)
+        多个变量的情况，介绍Gradient descent 中的 Feature Scaling, Learning rate</p>
+
+<p>Normal equation
+        Method to solve for theta analytically.</p>
+
+<p>比较 Gradient Descent 和 Normal Equation ，</p>
+
+<p>介绍Octave基本功能</p>
+
+<p>vectorized implementation</p>
+
+<p>Programming Exercises 1</p>
+
+<p>2 Linear regression with one variable
+2.2 Gradient Descent
+2.2.3 Computing the cost J(θ)</p>
+
+<p><code class="highlighter-rouge">J = (1 / (2 * m)) * sum(((X * theta - y).^2))</code><br />
+2.2.4 Gradient descent</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">%</span> <span class="mi">1</span><span class="n">st</span>  
+<span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">*</span> <span class="p">(</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">X</span><span class="s">' * (X * theta - y));  </span><span class="err">
+</span><span class="si">% 2</span><span class="s">nd  </span><span class="err">
+</span><span class="si">%</span><span class="s">temp1 = theta(1) - alpha * ( 1 / m) * sum(X * theta - y);  </span><span class="err">
+</span><span class="si">%</span><span class="s">temp2 = theta(2) - alpha * ( 1 / m) * sum((X(:,2) .* (X * theta - y)));  </span><span class="err">
+</span><span class="si">%</span><span class="s">theta = [temp1;temp2];  </span><span class="err">
+</span></code></pre>
+</div>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"post-header-container&gt;
+  &lt;div class="</span><span class="na">scrim</span> <span class="err">"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"post-header"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Andrew Ng 的 机器学习课程<span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"info"</span><span class="nt">&gt;</span>by <span class="nt">&lt;strong&gt;</span>L<span class="nt">&lt;/strong&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/header&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+<p>3 Linear regression with multiple variables
+3.1 Feature Normalization</p>
+
+<p>mu = mean(X);</p>
+
+<p>sigma = std(X);</p>
+
+<p>% problem: need for many other case<br />
+[m n] = size(X);<br />
+for i = 1:n<br />
+    X_norm(:,i) = (X(:,i) - mu(i)) / sigma(i);<br />
+end<br />
+3.2 Gradient Descent
+[plain] view plain copy
+J = (1 / (2 * m)) * sum(((X * theta - y).^2));</p>
+
+<p>[plain] view plain copy
+theta = theta - alpha * ( 1 / m) * (X’ * (X * theta - y));<br />
+3.3 Normal Equations
+[plain] view plain copy
+theta = pinv(X’ * X) * X’ * y;</p>
+
+</div>
+
+<div>
+	
+	<div class="eof"></div>
+	
+</div>
+
+<center>
+<div class="post-tags">
+
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">学习</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">ML</a>
+    
+
+</div>
+</center>
+
+<div class="post-recent">
+  
+    <p>上一篇
+    &nbsp;
+    
+    <i class="fa fa-file-archive-o" aria-hidden="true"></i>
+    
+    <a href="/acm/LeetCode.html">Leetcode</a></p>
+  
+  
+    <p>下一篇
+      &nbsp;
+      
+      <i class="fa fa-file-archive-o" aria-hidden="true"></i>
+      
+      <a href="/software/MathJax.html">MathJax在blog上的应用</a></p>
+  
+</div>
+
+<div class="share">
+    <p>Share this post with: </p>
+	<a href="https://twitter.com/intent/tweet?text=Andrew Ng 的 机器学习课程@liuyanfight&amp;url=https://liuyanfight.github.io/machine%20learning/Coursera-Maching-Learning.html" class="twitter-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://www.facebook.com/sharer/sharer.php?u=https://liuyanfight.github.io/machine%20learning/Coursera-Maching-Learning.html" class="facebook-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://plus.google.com/share?url=https://liuyanfight.github.io/machine%20learning/Coursera-Maching-Learning.html" class="googleplus-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+</div>
+
+
+<div id="disqus_thread"></div>
+
+
+<script type="text/javascript">
+	    /* * * CONFIGURATION VARIABLES * * */
+		var disqus_shortname = "liuyanfight";
+		var disqus_identifier = "/machine%20learning/Coursera-Maching-Learning";
+		var disqus_url = "https://liuyanfight.github.io/machine%20learning/Coursera-Maching-Learning.html";
+		(function() {
+			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+
+ 
+</div>
+
+
+</article>
+
+  </div>
+
+</body>
+
+<foot>
+
+    <foot>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Derictory -->
+
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
+
+<!-- Hit analytics -->
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- Directory -->
+
+<script src="/js/main.js"></script>
+
+</foot>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <center>
+
+		<p><a class="link" href="/archive/">Archive</a> /
+    <a class="link" href="/miniblog/">Miniblog</a> /
+    <a class="link" href="/calendar/">Calendar</a> /
+    <a class="link" href="/category/">Category</a> /
+		<a class="link" href="/tags/">Tags</a> /
+		<a class="link" href="/project/">Project</a> /
+    <a class="link" href="/about/">About</a>
+        </p>
+
+        <span><script>document.write(new Date().getFullYear());</script></span>
+        <span>&copy;</span>
+
+		<a class="link" href="">L</a>
+		<br>
+    </center>
+
+  </div>
+
+</footer>
+
+    
+</foot>
+
+</html>

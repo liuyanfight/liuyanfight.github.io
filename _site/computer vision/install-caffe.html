@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSS -->
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://liuyanfight.github.io/computer%20vision/install-caffe.html">
+  <link rel="alternate" type="application/rss+xml" title="My Blog" href="https://liuyanfight.github.io/feed.xml">
+
+<!-- Google font -->
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto Sans">
+
+<!-- font awesome -->
+
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+
+<!-- 公式 -->
+<!-- <script type="text/javascript" async
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script> -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true,
+    processEnvironments: true
+  }
+});
+</script>
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+<!-- Google Analytics -->
+<!-- <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)
+     },i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-86494680-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+-->
+
+</head>
+
+
+  
+    <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+  ga('create', 'UA-86494680-1', 'auto');
+  ga('send', 'pageview');
+    
+	</script>
+
+
+  
+
+  
+
+  </head>
+
+  <body>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Caffe安装</title>
+  <meta name="description" content="  按照要求安装了X2Go Client，相当于VPS一样的，系统是 	Ubuntu 14.04.1 LTS.但是没有安装Caffe，需要在没有sudo权限的情况下安装。昨天测试了一晚上，没有成功，今天继续。Install  Open a terminal, and download caffegit clone...">
+</head>
+
+
+  <div class="wrapper">
+          <header class="post-header">
+
+    <center><div class="post-title" itemprop="name headline">Caffe安装</div>
+
+		<div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="2016/09/07 00:00:00 Wednesday" itemprop="datePublished">2016/09/07 Wednesday</time>
+
+		&nbsp;&nbsp;•&nbsp;&nbsp;<i class="fa fa-user-secret"></i> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">page.author</span>
+    
+    <br />
+    
+		<!-- <br> -->
+		<!-- <i class="fa fa-eye"></i> <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-pulse"></i></span>˚C</span> -->
+	</div>
+
+    </center>
+
+</header>
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<div class="post-content">
+    <center>
+	
+	<p>Computer Vision Software</p>
+	
+    </center>
+	<h2>Directory</h2>
+</div>
+
+<div id="category"></div>
+
+<div class="post-content" itemprop="articleBody">
+    <blockquote>
+  <p>按照要求安装了X2Go Client，相当于VPS一样的，系统是 	Ubuntu 14.04.1 LTS.
+但是没有安装Caffe，需要在没有sudo权限的情况下安装。昨天测试了一晚上，没有成功，今天继续。</p>
+</blockquote>
+
+<h2 id="install">Install</h2>
+<ul>
+  <li>Open a terminal, and download caffe
+<code class="highlighter-rouge">git clone https://github.com/BVLC/caffe.git</code></li>
+  <li>make a copy of Makefile.config.example using file name “Makefile.config”
+<code class="highlighter-rouge">cp Makefile.config.example Makefile.config</code></li>
+  <li>Edit the Makefile.config file and make the following modification:
+<code class="highlighter-rouge">Uncomment USE_CUDNN := 1 to build with cuDNN</code></li>
+  <li>Change the CUDA_DIR using:
+<code class="highlighter-rouge">CUDA_DIR := /usr/local/cuda-7.5</code></li>
+  <li>Set LD_LIBRARY_PATH by editing  ~/.bashrc
+<code class="highlighter-rouge">vim ~/.basr_rc</code> 此处也可使用gedit</li>
+  <li>append  <code class="highlighter-rouge">export LD_LIBRARY_PATH=/opt/lib：/usr/local/cuda-7.5/lib64</code>  and <code class="highlighter-rouge">export PYTHONPATH=/home/yanliu/caffe/python</code> to this file.</li>
+  <li><code class="highlighter-rouge">source ~/.bashrc</code>完成编译</li>
+  <li>Then begin to build the caffe :
+<code class="highlighter-rouge">Make all -j8</code>
+<code class="highlighter-rouge">make pycaffe</code></li>
+  <li>Also, check out the examples in Caffe website: http://caffe.berkeleyvision.org</li>
+</ul>
+
+<h2 id="finished-at-201609071605">Finished at 2016/09/07/16:05</h2>
+
+</div>
+
+<div>
+	
+	<div class="eof"></div>
+	
+</div>
+
+<center>
+<div class="post-tags">
+
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">ML</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">学习</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">CV</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">DL</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">Sydney</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">Software</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">UTS</a>
+    
+
+</div>
+</center>
+
+<div class="post-recent">
+  
+    <p>上一篇
+    &nbsp;
+    
+    <i class="fa fa-file-archive-o" aria-hidden="true"></i>
+    
+    <a href="/data%20mining/Week1-Data-Mining-Max.html">Week 1 Data Mining</a></p>
+  
+  
+    <p>下一篇
+      &nbsp;
+      
+      <i class="fa fa-file-archive-o" aria-hidden="true"></i>
+      
+      <a href="/computer%20vision/CNN-CS231n.html">从神经网络到卷积神经网络的了解</a></p>
+  
+</div>
+
+<div class="share">
+    <p>Share this post with: </p>
+	<a href="https://twitter.com/intent/tweet?text=Caffe安装@liuyanfight&amp;url=https://liuyanfight.github.io/computer%20vision/install-caffe.html" class="twitter-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://www.facebook.com/sharer/sharer.php?u=https://liuyanfight.github.io/computer%20vision/install-caffe.html" class="facebook-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://plus.google.com/share?url=https://liuyanfight.github.io/computer%20vision/install-caffe.html" class="googleplus-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+</div>
+
+
+<div id="disqus_thread"></div>
+
+
+<script type="text/javascript">
+	    /* * * CONFIGURATION VARIABLES * * */
+		var disqus_shortname = "liuyanfight";
+		var disqus_identifier = "/computer%20vision/install-caffe";
+		var disqus_url = "https://liuyanfight.github.io/computer%20vision/install-caffe.html";
+		(function() {
+			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+
+ 
+</div>
+
+
+</article>
+
+  </div>
+
+</body>
+
+<foot>
+
+    <foot>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Derictory -->
+
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
+
+<!-- Hit analytics -->
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- Directory -->
+
+<script src="/js/main.js"></script>
+
+</foot>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <center>
+
+		<p><a class="link" href="/archive/">Archive</a> /
+    <a class="link" href="/miniblog/">Miniblog</a> /
+    <a class="link" href="/calendar/">Calendar</a> /
+    <a class="link" href="/category/">Category</a> /
+		<a class="link" href="/tags/">Tags</a> /
+		<a class="link" href="/project/">Project</a> /
+    <a class="link" href="/about/">About</a>
+        </p>
+
+        <span><script>document.write(new Date().getFullYear());</script></span>
+        <span>&copy;</span>
+
+		<a class="link" href="">L</a>
+		<br>
+    </center>
+
+  </div>
+
+</footer>
+
+    
+</foot>
+
+</html>

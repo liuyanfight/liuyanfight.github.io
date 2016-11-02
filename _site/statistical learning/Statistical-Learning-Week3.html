@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSS -->
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://liuyanfight.github.io/statistical%20learning/Statistical-Learning-Week3.html">
+  <link rel="alternate" type="application/rss+xml" title="My Blog" href="https://liuyanfight.github.io/feed.xml">
+
+<!-- Google font -->
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto Sans">
+
+<!-- font awesome -->
+
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+
+<!-- 公式 -->
+<!-- <script type="text/javascript" async
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script> -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true,
+    processEnvironments: true
+  }
+});
+</script>
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+<!-- Google Analytics -->
+<!-- <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)
+     },i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-86494680-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+-->
+
+</head>
+
+
+  
+    <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+  ga('create', 'UA-86494680-1', 'auto');
+  ga('send', 'pageview');
+    
+	</script>
+
+
+  
+
+  
+
+  </head>
+
+  <body>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Statistical learning Week 3 线性回归</title>
+  <meta name="description" content="Week 3 线性回归Outline  线性回归模型      最小二乘 Least Squares Fit    统计量 Mesures of Fit    假设检验    回归模型中的其他注意事项      Qualitative Predictors 定性预测    Interaction Terms   ...">
+</head>
+
+
+  <div class="wrapper">
+          <header class="post-header">
+
+    <center><div class="post-title" itemprop="name headline">Statistical learning Week 3 线性回归</div>
+
+		<div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="2016/10/18 00:00:00 Tuesday" itemprop="datePublished">2016/10/18 Tuesday</time>
+
+		&nbsp;&nbsp;•&nbsp;&nbsp;<i class="fa fa-user-secret"></i> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">page.author</span>
+    
+    <br />
+    
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <i class="fa fa-map-marker"></i>
+    <span>UTS Library</span>
+    
+		<!-- <br> -->
+		<!-- <i class="fa fa-eye"></i> <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-pulse"></i></span>˚C</span> -->
+	</div>
+
+    </center>
+
+</header>
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<div class="post-content">
+    <center>
+	
+    </center>
+	<h2>Directory</h2>
+</div>
+
+<div id="category"></div>
+
+<div class="post-content" itemprop="articleBody">
+    <h2 id="week-3-">Week 3 线性回归</h2>
+
+<h2 id="outline">Outline</h2>
+
+<blockquote>
+  <p>线性回归模型</p>
+
+  <ul>
+    <li>最小二乘 Least Squares Fit</li>
+    <li>统计量 Mesures of Fit</li>
+    <li>假设检验</li>
+  </ul>
+
+  <p>回归模型中的其他注意事项</p>
+
+  <ul>
+    <li>Qualitative Predictors 定性预测</li>
+    <li>Interaction Terms</li>
+  </ul>
+
+  <p>Potential Fit Problems<br />
+线性回归与KNN回归</p>
+</blockquote>
+
+<h2 id="section">线性回归模型</h2>
+
+<p><script type="math/tex">Y_i=\beta _0+\beta _1X_1+...+\beta _pX_p+\epsilon</script>
+其中，$\beta _0$代表截距，$\beta _i$代表变量$X_i$的斜率，$\epsilon$代表均值为0的随机误差项。</p>
+
+<p>可使用梯度下降或牛顿迭代法来求参数$\beta$。</p>
+
+<h3 id="least-squares-fit">最小二乘估计 (least squares fit)</h3>
+
+<p>使用最小二乘法估计参数
+<script type="math/tex">MSE=\frac 1n\sum _{i=1}^n(Y_i-\hat Y_i)^2=\frac 1n\sum _{i=1}^n(Y_i-\hat \beta _0-\hat \beta _1X_1-...-\hat \beta _pX_p)^2</script></p>
+
+<h3 id="mesures-of-fit">统计量(Mesures of Fit)</h3>
+
+<p>标准差(standard erro, SE)</p>
+
+<script type="math/tex; mode=display">Var(\hat \mu)=SE(\hat \mu)^2=\frac {\sigma ^2}{n}</script>
+
+<p>其中 $\sigma$是变量$Y$的每个预测值$y_i$的标准差。$\sigma = \sqrt{\frac 1N \sum _{i=1}^N(x_i-\mu)^2}$,$\mu$为平均值。</p>
+
+<p>残差平方和(residual sum of squares, RSS)</p>
+
+<script type="math/tex; mode=display">RSS=\sum _{i=1}^n(y_i-\hat y_i)^2</script>
+
+<p>总平方和(total sum of squares, TSS)测量y的总方差。</p>
+
+<script type="math/tex; mode=display">TSS=\sum (y_i-\overline y)^2</script>
+
+<p>判断线性回归的拟合质量通常使用两个相关的量：残差标准误(residual standard error, RSE)和 $R^2$统计量。</p>
+
+<p>RSE是对$\epsilon$的标准偏差的估计。$R^2$统计量采用比例的方式(被解释方差的比例)。</p>
+
+<script type="math/tex; mode=display">R^2=\frac {TSS-RSS}{TSS}=1-\frac {RSS}{TSS}\approx 1-\frac {Ending Variance}{Starting Variance}</script>
+
+<p>$R^2$统计量总是在0到1之间，0意味着模型没有解释任何variance，1意味着完美解释。</p>
+
+<blockquote>
+  <p>2016/10/19</p>
+</blockquote>
+
+<h3 id="hypothesis-test">假设检验 hypothesis test</h3>
+
+<p>在进行多元线性回归时，有一些重要问题需要解释：</p>
+
+<ol>
+  <li>
+    <p>$\beta _j$是否等于0？我们可以使用假设检验来回答。如果我们不能确定 $\beta _0 \neq j$,那么$X _j$在预测中就不存在。</p>
+  </li>
+  <li>
+    <p>我们能确定至少有一个变量X是有用的吗？即$\beta _1=\beta _2=\beta _j=0$?</p>
+  </li>
+</ol>
+
+<p><em>$\beta _j = 0$?X是一个重要的变量吗？</em></p>
+
+<p>我们使用 <strong>假设检验</strong> 来回答这个问题。<br />
+检验零假设：</p>
+
+<script type="math/tex; mode=display">H_0:\beta _j=0</script>
+
+<p>对应的备择假设是</p>
+
+<script type="math/tex; mode=display">H_a:\beta _j \neq 0</script>
+
+<p>计算t-test，测量$\beta _j$偏离0的标准偏差。其中</p>
+
+<script type="math/tex; mode=display">t=\frac {\hat \beta _j}{SE(\hat \beta _j)}</script>
+
+<table>
+  <tbody>
+    <tr>
+      <td>当$n&gt;30$时，t近似正态分布。假设$\beta _j = 0$，计算任意观测值大于等于$</td>
+      <td>t</td>
+      <td>$的概率，就是 <strong>p值</strong> (p value)。可以认为，当p很小时，预测变量和响应变量间存在关联。</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>如果t比较大（p比较小），我们就可以确定$\beta _j \neq 0$，并且存在着关系。</p>
+
+<p><strong>整个回归公式解释所有情况吗？</strong></p>
+
+<p>假设</p>
+
+<script type="math/tex; mode=display">H_0:所有的都为0，即\beta _1=\beta _2=\beta _j=0, H_a:至少一个不为0</script>
+
+<p>使用F检测(F test)</p>
+
+<script type="math/tex; mode=display">F= \frac {(TSS-RSS)/p}{RSS/(n-p-1)}</script>
+
+<p>若$H_0$为真，则F统计量应该接近1，如果$H_a$为真，那么F大于1.</p>
+
+<h2 id="section-1">回归模型中的其他注意事项</h2>
+
+<h3 id="section-2">定性预测变量</h3>
+
+<p>上面讲的都是定量(quantitative)的，也可使用回归处理分类问题。
+<img src="/img/blog/1014/3.png" alt="定性问题" /></p>
+
+<h2 id="k-knn-regression">K近邻回归 KNN Regression</h2>
+
+<p>与KNN分类近似。根据给定的X选择K个最接近的点，用这些点的平均值来估计$f(x_0)$</p>
+
+<script type="math/tex; mode=display">f(x)=\frac 1K \sum _{x_i \in N_i}y_i</script>
+
+<p>当真实关系为非线性时，KNN比线性回归更好。</p>
+
+<blockquote>
+  <p>这一章有点乱</p>
+</blockquote>
+
+
+</div>
+
+<div>
+	
+	<div class="eof"></div>
+	
+</div>
+
+<center>
+<div class="post-tags">
+
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">UTS</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">Sydney</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">ML</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">SL</a>
+    
+
+</div>
+</center>
+
+<div class="post-recent">
+  
+    <p>上一篇
+    &nbsp;
+    
+    <i class="fa fa-file-archive-o" aria-hidden="true"></i>
+    
+    <a href="/statistical%20learning/Statistical-Learning-Week2.html">Statistical learning Week 2 评估模型精度</a></p>
+  
+  
+    <p>下一篇
+      &nbsp;
+      
+      <i class="fa fa-comment-o" aria-hidden="true"></i>
+      
+      <a href="/miniblog/11-41.html">2016-10-19 11:41</a></p>
+  
+</div>
+
+<div class="share">
+    <p>Share this post with: </p>
+	<a href="https://twitter.com/intent/tweet?text=Statistical learning Week 3 线性回归@liuyanfight&amp;url=https://liuyanfight.github.io/statistical%20learning/Statistical-Learning-Week3.html" class="twitter-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://www.facebook.com/sharer/sharer.php?u=https://liuyanfight.github.io/statistical%20learning/Statistical-Learning-Week3.html" class="facebook-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://plus.google.com/share?url=https://liuyanfight.github.io/statistical%20learning/Statistical-Learning-Week3.html" class="googleplus-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+</div>
+
+
+<div id="disqus_thread"></div>
+
+
+<script type="text/javascript">
+	    /* * * CONFIGURATION VARIABLES * * */
+		var disqus_shortname = "liuyanfight";
+		var disqus_identifier = "/statistical%20learning/Statistical-Learning-Week3";
+		var disqus_url = "https://liuyanfight.github.io/statistical%20learning/Statistical-Learning-Week3.html";
+		(function() {
+			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+
+ 
+</div>
+
+
+</article>
+
+  </div>
+
+</body>
+
+<foot>
+
+    <foot>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Derictory -->
+
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
+
+<!-- Hit analytics -->
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- Directory -->
+
+<script src="/js/main.js"></script>
+
+</foot>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <center>
+
+		<p><a class="link" href="/archive/">Archive</a> /
+    <a class="link" href="/miniblog/">Miniblog</a> /
+    <a class="link" href="/calendar/">Calendar</a> /
+    <a class="link" href="/category/">Category</a> /
+		<a class="link" href="/tags/">Tags</a> /
+		<a class="link" href="/project/">Project</a> /
+    <a class="link" href="/about/">About</a>
+        </p>
+
+        <span><script>document.write(new Date().getFullYear());</script></span>
+        <span>&copy;</span>
+
+		<a class="link" href="">L</a>
+		<br>
+    </center>
+
+  </div>
+
+</footer>
+
+    
+</foot>
+
+</html>

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSS -->
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://liuyanfight.github.io/computer%20vision/CNN-CS231n.html">
+  <link rel="alternate" type="application/rss+xml" title="My Blog" href="https://liuyanfight.github.io/feed.xml">
+
+<!-- Google font -->
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto Sans">
+
+<!-- font awesome -->
+
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+
+<!-- 公式 -->
+<!-- <script type="text/javascript" async
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script> -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true,
+    processEnvironments: true
+  }
+});
+</script>
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+<!-- Google Analytics -->
+<!-- <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)
+     },i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-86494680-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+-->
+
+</head>
+
+
+  
+    <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+  ga('create', 'UA-86494680-1', 'auto');
+  ga('send', 'pageview');
+    
+	</script>
+
+
+  
+
+  
+
+  </head>
+
+  <body>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>从神经网络到卷积神经网络的了解</title>
+  <meta name="description" content="  老师提供的阅读材，上周就应该看完，但还是没看，这周需要看完然后看两篇FNN的论文并做一个report。 提供的材料是CS231nPS:才发现有翻译，真真好人，我真真浪费时间t-TPPS：再也不干像一句一句翻译这么笨蛋的方法了。学习还是理解为主。以下仅为总结摘抄的笔记。神经网络神经网络是一种模仿生物神经网络(动...">
+</head>
+
+
+  <div class="wrapper">
+          <header class="post-header">
+
+    <center><div class="post-title" itemprop="name headline">从神经网络到卷积神经网络的了解</div>
+
+		<div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="2016/09/14 11:02:00 Wednesday" itemprop="datePublished">2016/09/14 Wednesday</time>
+
+		&nbsp;&nbsp;•&nbsp;&nbsp;<i class="fa fa-user-secret"></i> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">page.author</span>
+    
+    <br />
+    
+		<!-- <br> -->
+		<!-- <i class="fa fa-eye"></i> <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-pulse"></i></span>˚C</span> -->
+	</div>
+
+    </center>
+
+</header>
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<div class="post-content">
+    <center>
+	
+    </center>
+	<h2>Directory</h2>
+</div>
+
+<div id="category"></div>
+
+<div class="post-content" itemprop="articleBody">
+    <blockquote>
+  <p>老师提供的阅读材，上周就应该看完，但还是没看，这周需要看完然后看两篇FNN的论文并做一个report。 提供的材料是<a href="http://cs231n.github.io/convolutional-networks/"><strong>CS231n</strong></a>
+PS:才发现有<a href="https://zhuanlan.zhihu.com/p/22038289?refer=intelligentunit"><strong>翻译</strong></a>，真真好人，我真真浪费时间t-T
+PPS：再也不干像一句一句翻译这么笨蛋的方法了。学习还是理解为主。以下仅为总结摘抄的笔记。</p>
+</blockquote>
+
+<h2 id="section">神经网络</h2>
+
+<p>神经网络是一种模仿生物神经网络(动物的中枢神经系统，特别是大脑)的结构和功能的数学模型或计算模型用于对函数进行估计或近似。</p>
+
+<p><a href="https://www.zhihu.com/question/22553761">如何简单形象又有趣地讲解神经网络是什么？</a></p>
+
+<p>神经元就是当h大于0时输出1，h小于0时输出0这么一个模型，它的实质就是把特征空间一切两半，认为两半分别属两个类。</p>
+
+<p>多层神经网络中底层神经元的输出是高层神经元的输入。神经网络神奇的地方在于它的每一个组件非常简单——把空间切一刀+某种激活函数(0-1阶跃、sigmoid、max-pooling)，但是可以一层一层级联。输入向量连到许多神经元上，这些神经元的输出又连到一堆神经元上，这一过程可以重复很多次。</p>
+
+<p>神经网络的训练依靠反向传播算法：最开始输入层输入特征向量，网络层层计算获得输出，输出层发现输出和正确的类号不一样，这时它就让最后一层神经元进行参数调整，最后一层神经元不仅自己调整参数，还会勒令连接它的倒数第二层神经元调整，层层往回退着调整。经过调整的网络会在样本上继续测试，如果输出还是老分错，继续来一轮回退调整，直到网络输出满意为止。</p>
+
+<blockquote>
+  <p>以下内容来自</p>
+</blockquote>
+
+<ul>
+  <li><a href="https://zhuanlan.zhihu.com/p/20265859">神经网络：文艺女vs理工男</a></li>
+  <li><a href="http://blog.csdn.net/stdcoutzyx/article/details/41596663">卷积神经网络</a></li>
+  <li><a href="http://www.cnblogs.com/subconscious/p/5058741.html">神经网络浅讲：从神经元到深度学习</a><strong>(必看！写的超级好)</strong></li>
+  <li><a href="http://blog.csdn.net/u013007900/article/details/50066315"> 神经网络学习之M-P模型</a></li>
+  <li><a href="http://www.jeyzhang.com/cnn-learning-notes-1.html">卷积神经网络(CNN)学习笔记1：基础入门</a></li>
+  <li><a href="http://blog.csdn.net/zouxy09/article/details/8781543"> Deep Learning（深度学习）学习笔记整理系列之（七）</a></li>
+</ul>
+
+<p><img src="/img/blog/20160914/11.jpg" alt="神经网络的类别" /></p>
+
+<h3 id="mp">神经网络和数学模型MP</h3>
+
+<p>1943年，心理学家McCulloch和数学家Pitts参考了生物神经元的结构，发表了抽象的神经元模型MP。</p>
+
+<p>MP模型是按照生物神经元的结构和工作原理构造出来的一个抽象和简化了的模型。</p>
+
+<p>生物神经网络的假定特点：</p>
+
+<ol>
+  <li>每个神经元都是一个多输入单输出的信息处理单元；</li>
+  <li>神经元输入分兴奋性输入和抑制性输入两种类型；</li>
+  <li>神经元具有空间整合特性和阈值特性；</li>
+  <li>神经元输入与输出间有固定的时滞，主要取决于突触延搁</li>
+</ol>
+
+<p>按照生物神经元，建立M-P模型。神经元可以表示如下：</p>
+
+<p><img src="/img/blog/20160914/1.png" alt="神经元" /></p>
+
+<p>结构图里的关键不是圆圈（代表“神经元”），而是连接线（代表“神经元”之间的连接）。每个连接线对应一个不同的权重（其值称为权值），这是需要训练得到的。在神经元模型里，每个有向箭头表示的是值的加权传递。我们使用a来表示输入，用w来表示权值。一个表示连接的有向箭头可以这样理解：在初端，传递的信号大小仍然是a，端中间有加权参数w，经过这个加权后的信号会变成a*w，因此在连接的末端，信号的大小就变成了a*w。</p>
+
+<p>将神经元图中的所有变量用符号表示，那么对应的公式为 <img src="/img/blog/20160914/2.png" alt="神经元" /></p>
+
+<p>但只输出0和1，不可微，不利于数学分析，实际过程中使用sgn函数(即函数f)等。</p>
+
+<p>1943年发布的MP模型，虽然简单，但已经建立了神经网络大厦的地基。但是，MP模型中，权重的值都是<strong>预先设置</strong>的，因此不能学习。</p>
+
+<h3 id="section-1">感知器</h3>
+
+<p>1958年，计算科学家Rosenblatt提出了由两层神经元组成的神经网络。他给它起了一个名字–“感知器”（Perceptron）。</p>
+
+<p>在原来MP模型的“输入”位置添加神经元节点，标志其为“输入单元”。其余不变。</p>
+
+<p><img src="/img/blog/20160914/1.jpg" alt="单层神经网络" /></p>
+
+<p>在“感知器”中，有两个层次。分别是输入层和输出层。输入层里的“输入单元”只负责传输数据，不做计算。输出层里的“输出单元”则需要对前面一层的输入进行计算。</p>
+
+<p>我们把需要计算的层次称之为“计算层”，并把拥有一个计算层的网络称之为“单层神经网络”。有一些文献会按照网络拥有的层数来命名，例如把“感知器”称为两层神经网络。</p>
+
+<p>假如我们要预测的目标不再是一个值，而是一个向量。那么可以在输出层再增加一个“输出单元”。</p>
+
+<p>下图显示了带有两个输出单元的单层神经网络，其中输出单元h1和h2的计算公式如下图。</p>
+
+<p><img src="/img/blog/20160914/9.jpg" alt="单层神经网络扩展" /></p>
+
+<p>使用二维的下标，用w(x ,y)来表达一个权值。下标中的x代表后一层神经元的序号，而y代表前一层神经元的序号（序号的顺序从上到下）。</p>
+
+<p>可以用矩阵乘法来表达这两个公式,输出公式可以改写成：f(W * a) = h;这个公式就是神经网络中从前一层计算后一层的<strong>矩阵运算</strong>。</p>
+
+<p>与神经元模型不同，感知器中的权值是通过<strong>训练</strong>得到的.感知器只能做简单的线性分类任务。</p>
+
+<h3 id="mlp">两层神经网络(多层感知器MLP)</h3>
+
+<p>单层神经网络无法解决异或问题。但是当增加一个计算层以后，两层神经网络不仅可以解决异或问题，而且具有非常好的非线性分类效果。不过两层神经网络的计算是一个问题，没有一个较好的解法。1986年，Rumelhar和Hinton等人提出了反向传播（Backpropagation，BP）算法，解决了两层神经网络所需要的复杂计算量问题，从而带动了业界使用两层神经网络研究的热潮。</p>
+
+<p>两层神经网络除了包含一个输入层，一个输出层以外，还增加了一个中间层。此时，中间层和输出层都是计算层。</p>
+
+<p><img src="/img/blog/20160914/3.png" alt="NN" /></p>
+
+<p>使用矩阵运算，即
+- f(W(1) * a(1)) = a(2);
+- f(W(2) * a(2)) = h;</p>
+
+<p>假设我们的预测目标是一个向量，那么与前面类似，只需要在“输出层”再增加节点即可。</p>
+
+<p>需要说明的是，神经网络的结构图中一直默认存在着偏置节点（bias unit）。它本质上是一个只含有存储功能，且存储值永远为1的单元。在神经网络的每个层次中，除了输出层以外，都会含有这样一个偏置单元。正如线性回归模型与逻辑回归模型中的一样。偏置单元与后一层的所有节点都有连接，我们设这些参数值为向量b，称之为偏置。</p>
+
+<p>在考虑了偏置以后的一个神经网络的矩阵运算如下：</p>
+
+<ul>
+  <li>f(W(1) * a(1) + b(1)) = a(2);</li>
+  <li>f(W(2) * a(2) + b(2)) = h;</li>
+</ul>
+
+<p>在两层神经网络中，我们不再使用sgn函数作为函数f，而是使用平滑函数sigmoid作为函数f。我们把函数f也称作 <strong>激活函数</strong> （active function）。</p>
+
+<p><strong>事实上，神经网络的本质就是通过参数与激活函数来拟合特征与目标之间的真实函数关系。初学者可能认为画神经网络的结构图是为了在程序中实现这些圆圈与线，但在一个神经网络的程序中，既没有“线”这个对象，也没有“单元”这个对象。实现一个神经网络最需要的是线性代数库。</strong></p>
+
+<p>与单层神经网络不同。理论证明，两层神经网络可以无限逼近任意连续函数。</p>
+
+<p><strong>单层网络只能做线性分类任务。而两层神经网络中的后一层也是线性分类层，应该只能做线性分类任务。为什么两个线性分类任务结合就可以做非线性分类任务?</strong></p>
+
+<p>举例，红色的线与蓝色的线代表数据。而红色区域和蓝色区域代表由神经网络划开的区域，两者的分界线就是决策分界。</p>
+
+<p><img src="/img/blog/20160914/4.png" alt="两层神经网络" /></p>
+
+<p>左图可以看到，这个两层神经网络的决策分界是非常平滑的曲线，而且分类的很好。右图是单独看输出层的决策分界，可以看到，输出层的决策分界仍然是直线。关键就是，从输入层到隐藏层时，数据发生了空间变换。</p>
+
+<p>在两层神经网络中，隐藏层对原始的数据进行了一个空间变换，使其可以被线性分类，然后输出层的决策分界划出了一个线性分类分界线，对其进行分类。</p>
+
+<p>这样就导出了两层神经网络可以做非线性分类的关键–隐藏层。矩阵和向量相乘，本质上就是对向量的坐标空间进行一个变换。因此，隐藏层的参数矩阵的作用就是使得数据的原始坐标空间从线性不可分，转换成了线性可分。</p>
+
+<p>两层神经网络通过两层的线性模型模拟了数据内真实的非线性函数。因此， <strong>多层的神经网络的本质就是复杂函数拟合。</strong></p>
+
+<p><strong>隐藏层的节点数设计:</strong></p>
+
+<p>在设计一个神经网络时，输入层的节点数需要与特征的维度匹配，输出层的节点数要与目标的维度匹配。而中间层的节点数，却是由设计者指定的。因此，“自由”把握在设计者的手中。但是，节点数设置的多少，却会影响到整个模型的效果。如何决定这个自由层的节点数呢？目前业界没有完善的理论来指导这个决策。一般是根据经验来设置。较好的方法就是预先设定几个可选值，通过切换这几个值来看整个模型的预测效果，选择效果最好的值作为最终选择。这种方法又叫做Grid Search（网格搜索）。</p>
+
+<p><strong>两层神经网络的训练:</strong></p>
+
+<p>从两层神经网络开始，神经网络的研究人员开始使用机器学习相关的技术进行神经网络的训练。例如用大量的数据（1000-10000左右），使用算法进行优化等等，从而使得模型训练可以获得性能与数据利用上的双重优势。</p>
+
+<p>机器学习模型训练的目的，就是使得参数尽可能的与真实的模型逼近。不过由于其多层性，还需要利用链式求导法则对隐含层的节点进行求导，即梯度下降+链式求导法则，专业名称为反向传播。</p>
+
+<p>具体做法是这样的。首先给所有参数赋上随机值。我们使用这些随机生成的参数值，来预测训练数据中的样本。样本的预测目标为yp，真实目标为y。那么，定义一个值loss，计算公式如下。</p>
+
+<ul>
+  <li>loss = (yp - y)^2</li>
+</ul>
+
+<p>这个值称之为损失（loss），我们的目标就是使对所有训练数据的损失和尽可能的小。</p>
+
+<p>如果将先前的神经网络预测的矩阵公式带入到yp中（因为有z=yp），那么我们可以把损失写为关于参数（parameter）的函数，这个函数称之为损失函数（loss function）。神经网络的输出和预期越接近， 就越接近于0. “训练”过程就是选择合适的w和b，让C(w,b)最小化。</p>
+
+<p><img src="/img/blog/20160914/6.jpg" alt="Object Function" /></p>
+
+<p>此时这个问题就被转化为一个优化问题。一个常用方法就是高等数学中的求导，但是这里的问题由于参数不止一个，求导后计算导数等于0的运算量很大，所以一般来说解决这个优化问题使用的是 <strong>梯度下降算法</strong> 。梯度下降算法每次计算参数在当前的梯度，然后让参数向着梯度的反方向前进一段距离，不断重复，直到梯度接近零时截止。一般这个时候，所有的参数恰好达到使损失函数达到一个最低值的状态。</p>
+
+<p>在神经网络模型中，由于结构复杂，每次计算梯度的代价很大。因此还需要使用 <strong>反向传播算法</strong>。反向传播算法是利用了神经网络的结构进行的计算。不一次计算所有参数的梯度，而是从后往前。首先计算输出层的梯度，然后是第二个参数矩阵的梯度，接着是中间层的梯度，再然后是第一个参数矩阵的梯度，最后是输入层的梯度。计算结束以后，所要的两个参数矩阵的梯度就都有了。</p>
+
+<p>优化问题只是训练中的一个部分。机器学习问题之所以称为学习问题，而不是优化问题，就是因为它不仅要求数据在训练集上求得一个较小的误差，在测试集上也要表现好。因为模型最终是要部署到没有见过训练数据的真实场景。提升模型在测试集上的预测效果的主题叫做 <strong>泛化</strong> （generalization），相关方法被称作正则化（regularization）。神经网络中常用的泛化技术有权重衰减等。</p>
+
+<p>但是神经网络仍然存在若干的问题：</p>
+
+<ol>
+  <li>一次神经网络的训练仍然耗时太久，</li>
+  <li>局部最优解问题，这使得神经网络的训练优化较为困难。</li>
+  <li>隐藏层的节点数需要调参，使用不太方便。</li>
+</ol>
+
+<h2 id="section-2">多层神经网络（深度学习）</h2>
+
+<p>多个神经元可以组成神经网络模型</p>
+
+<p><img src="/img/blog/20160914/4.jpg" alt="NN" /></p>
+
+<p>除了输入、输出两层，其它的叫隐藏层。每个神经元是一个决策单元，整个神经网络是一个复杂的决策网络。它要做的事，就是通过隐藏层，把输入层处理成我们想要的输出层。</p>
+
+<p>多层神经网络中，输出也是按照一层一层的方式来计算。从最外面的层开始，算出所有单元的值以后，再继续计算更深一层。只有当前层所有单元的值都计算完毕以后，才会算下一层。有点像计算向前不断推进的感觉。所以这个过程叫做 <strong>“正向传播”</strong> 。</p>
+
+<p>与两层层神经网络不同。多层神经网络中的层数增加了很多。</p>
+
+<p><strong>增加更多的层次有什么好处？</strong> 更深入的表示特征，以及更强的函数模拟能力。</p>
+
+<p>更深入的表示特征可以这样理解，随着网络的层数增加，每一层对于前一层次的抽象表示更深入。在神经网络中，每一层神经元学习到的是前一层神经元值的更抽象的表示。例如第一个隐藏层学习到的是“边缘”的特征，第二个隐藏层学习到的是由“边缘”组成的“形状”的特征，第三个隐藏层学习到的是由“形状”组成的“图案”的特征，最后的隐藏层学习到的是由“图案”组成的“目标”的特征。通过抽取更抽象的特征来对事物进行区分，从而获得更好的区分与分类能力。</p>
+
+<p>更强的函数模拟能力是由于随着层数的增加，整个网络的参数就越多。而神经网络其实本质就是模拟特征与目标之间的真实关系函数的方法，更多的参数意味着其模拟的函数可以更加的复杂，可以有更多的容量（capcity）去拟合真正的关系。</p>
+
+<p>通过研究发现，在参数数量一样的情况下，更深的网络往往具有比浅层的网络更好的识别效率。</p>
+
+<p><strong>训练：</strong></p>
+
+<p>在单层神经网络时，我们使用的激活函数是sgn函数。到了两层神经网络时，我们使用的最多的是sigmoid函数。而到了多层神经网络时，通过一系列的研究发现， <strong>ReLU函数</strong> 在训练多层神经网络时，更容易收敛，并且预测性能更好。</p>
+
+<p>ReLU函数不是传统的非线性函数，而是分段线性函数。其表达式非常简单，就是y=max(x,0)。简而言之，在x大于0，输出就是输入，而在x小于0时，输出就保持为0。这种函数的设计启发来自于生物神经元对于激励的线性响应，以及当低于某个阈值后就不再响应的模拟。</p>
+
+<p>在多层神经网络中，训练的主题仍然是优化和泛化。</p>
+
+<p><strong>备注：</strong></p>
+
+<p>损失函数loss function又称残差函数error function，以及代价函数cost function。这三者都是同一个意思，都是优化问题所需要求解的方程。</p>
+
+<p>权重weight和参数parameter，神经网络界由于以前的惯例，一般会将训练得到的参数称之为权重，而不像其他机器学习方法就称之为参数。这个需要记住就好。不过在目前的使用惯例中，也有这样一种规定。那就是非偏置节点连接上的值称之为权重，而偏置节点上的值称之为偏置，两者统一起来称之为参数。</p>
+
+<p>激活函数active function又叫转移函数transfer function，即叠加的非线性函数。</p>
+
+<p>BP神经网络是什么？是使用了反向传播BP算法的两层前馈神经网络。也是最普遍的一种两层神经网络。</p>
+
+<h2 id="section-3">卷积神经网络</h2>
+
+<p>卷积神经网络Convolutional Neural Networks，又叫CNNs或者ConvNets。CNN属于一种特殊的多层神经网络。卷积神经网络是一种前馈神经网络，它的人工神经元可以响应一部分覆盖范围内的周围单元，对于大型图像处理有出色表现。</p>
+
+<p>卷积神经网络由一个或多个卷积层和顶端的全连通层（对应经典的神经网络）组成，同时也包括关联权重和池化层（pooling layer）。这一结构使得卷积神经网络能够利用输入数据的二维结构。</p>
+
+<p>图像处理中，往往会将图像看成是一个或多个的二维向量，如之前博文中提到的MNIST手写体图片就可以看做是一个28 × 28的二维向量（黑白图片，只有一个颜色通道；如果是RGB表示的彩色图片则有三个颜色通道，可表示为三张二维向量）。与传统神经网络采用全连接的方式不同，CNN通过__局部连接__和__权值共享__的方法来避免参数过多。</p>
+
+<h3 id="section-4">局部连接</h3>
+
+<p>一般认为人对外界的认知是从局部到全局的，而图像的空间联系也是局部的像素联系较为紧密，而距离较远的像素相关性则较弱。因而，每个神经元其实没有必要对全局图像进行感知，只需要对局部进行感知，然后在更高层将局部的信息综合起来就得到了全局的信息。网络部分连通的思想，也是受启发于生物学里面的视觉系统结构。视觉皮层的神经元就是局部接受信息的（即这些神经元只响应某些特定区域的刺激）。</p>
+
+<p><img src="/img/blog/20160914/12.jpg" alt="全连接与局部连接" /></p>
+
+<p>左图为全连接，输入一个1000×1000的图像，如果隐藏层数目与输入层一样，那么输入层到隐含层的权值参数为1000 × 1000 × 10^6 = 10^12，如此数目巨大的参数几乎难以训练；右图为局部连接，隐藏层的每个神经元仅与图像中10 × 10的局部图像相连接，那么此时的权值参数数量为10 × 10 × 10^6 = 10^8，将直接减少4个数量级。</p>
+
+<h3 id="section-5">权值共享</h3>
+
+<p>图像的一部分的统计特性与其他部分是一样的。这也意味着我们在这一部分学习的特征也能用在另一部分上，所以对于这个图像上的所有位置，我们都能使用同样的学习特征。</p>
+
+<p>在局部连接中隐藏层的每一个神经元连接的是一个10 × 10的局部图像，因此有10 × 10个权值参数，将这10 × 10个权值参数共享给剩下的神经元，也就是说隐藏层中10^6个神经元的权值参数相同，那么此时不管隐藏层神经元的数目是多少，需要训练的参数就是这 10 × 10个权值参数（也就是卷积核(也称滤波器)的大小）。</p>
+
+<p><img src="/img/blog/20160914/13.jpg" alt="权值共享" /></p>
+
+<p>这样仅提取了图像的一种特征，如果要多提取出一些特征，可以增加多个卷积核(一个卷积核包含多个卷积)，不同的卷积核能够得到图像的不同映射下的特征，称之为<code class="highlighter-rouge">Feature Map</code>。如果有100个卷积核，最终的权值参数也仅为100 × 100 = 10^4。另外，偏置参数也是共享的，同一种滤波器共享一个。</p>
+
+<p><strong>卷积神经网络的核心思想是：局部感受野(local field)，权值共享以及时间或空间亚采样这三种思想结合起来，获得了某种程度的位移、尺度、形变不变性.</strong></p>
+
+<p>CNN中主要有两种类型的网络层，分别是卷积层和池化/采样层(Pooling)。卷积层的作用是提取图像的各种特征；池化层的作用是对原始特征信号进行抽象，从而大幅度减少训练参数，另外还可以减轻模型过拟合的程度。</p>
+
+<h3 id="section-6">卷积</h3>
+
+<p>卷积层（Convolutional layer），卷积神经网络中每层卷积层由若干卷积核(卷积单元)组成，每个卷积单元的参数都是通过反向传播算法优化得到的。卷积运算的目的是提取输入的不同特征，第一层卷积层可能只能提取一些低级的特征如边缘、线条和角等层级，更多层的网络能从低级特征中迭代提取更复杂的特征。</p>
+
+<p><img src="/img/blog/20160914/1.gif" alt="卷积" /></p>
+
+<p>上图解释了卷积过程。就是矩阵的点乘。从一个5×5的图像中学习9个特征。</p>
+
+<ul>
+  <li>全连接：5×5×9个权值参数</li>
+  <li>局部连接：3×3×9个权值参数</li>
+  <li>局部连接+权值共享：3×3×1个权值参数</li>
+</ul>
+
+<h3 id="section-7">池化/采样层</h3>
+
+<p>池化层（Pooling layer），通常在卷积层之后会得到维度很大的特征，为了进一步降低网络训练参数及模型的过拟合程度，将特征切成几个区域，取其最大值(Max-Pooling)或平均值(Mean-Pooling)，得到新的、维度较小的特征。</p>
+
+<p><img src="/img/blog/20160914/2.gif" alt="池化" /></p>
+
+<h3 id="lenet-5">LeNet-5网络</h3>
+
+<p>LeNet-5网络是一个经典的CNN结构。其网络图如下。
+<img src="/img/blog/20160914/5.png" alt="LeNet-5" /></p>
+
+<p>每个层有多个Feature Map，每个Feature Map通过一种卷积滤波器提取输入的一种特征，然后每个Feature Map有多个神经元。</p>
+
+<p><img src="/img/blog/20160914/6.png" alt="LeNet-5" /></p>
+
+<p>C1层是一个卷积层（为什么是卷积？卷积运算一个重要的特点就是，通过卷积运算，可以使原信号特征增强，并且降低噪音），由6个特征图Feature Map构成。特征图中每个神经元与输入中5<em>5的邻域相连。特征图的大小为28</em>28，这样能防止输入的连接掉到边界之外（是为了BP反馈时的计算，不致梯度损失，个人见解）。C1有156个可训练参数（每个滤波器5<em>5=25个unit参数和一个bias参数，一共6个滤波器，共(5</em>5+1)<em>6=156个参数），共156</em>(28*28)=122,304个连接。</p>
+
+<p><img src="/img/blog/20160914/7.png" alt="LeNet-5" /></p>
+
+<p>S2层是一个下采样层（为什么是下采样？利用图像局部相关性的原理，对图像进行子抽样，可以减少数据处理量同时保留有用信息），有6个14<em>14的特征图。特征图中的每个单元与C1中相对应特征图的2</em>2邻域相连接。S2层每个单元的4个输入相加，乘以一个可训练参数，再加上一个可训练偏置。结果通过sigmoid函数计算。可训练系数和偏置控制着sigmoid函数的非线性程度。如果系数比较小，那么运算近似于线性运算，亚采样相当于模糊图像。如果系数比较大，根据偏置的大小亚采样可以被看成是有噪声的“或”运算或者有噪声的“与”运算。每个单元的2*2感受野并不重叠，因此S2中每个特征图的大小是C1中特征图大小的1/4（行和列各1/2）。S2层有12个可训练参数和5880个连接。</p>
+
+<p><img src="/img/blog/20160914/14.jpg" alt="卷积和子采样过程" /></p>
+
+<p>上图为卷积和子采样过程：卷积过程包括：用一个可训练的滤波器fx去卷积一个输入的图像（第一阶段是输入的图像，后面的阶段就是卷积特征map了），然后加一个偏置bx，得到卷积层Cx。子采样过程包括：每邻域四个像素求和变为一个像素，然后通过标量Wx+1加权，再增加偏置bx+1，然后通过一个sigmoid激活函数，产生一个大概缩小四倍的特征映射图Sx+1。</p>
+
+<p>所以从一个平面到下一个平面的映射可以看作是作卷积运算，S-层可看作是模糊滤波器，起到二次特征提取的作用。隐层与隐层之间空间分辨率递减，而每层所含的平面数递增，这样可用于检测更多的特征信息。</p>
+
+<p><img src="/img/blog/20160914/8.png" alt="LeNet-5" /></p>
+
+<p>C3层也是一个卷积层，它同样通过5x5的卷积核去卷积层S2，然后得到的特征map就只有10x10个神经元，但是它有16种不同的卷积核，所以就存在16个特征map了。这里需要注意的一点是：C3中的每个特征map是连接到S2中的所有6个或者几个特征map的，表示本层的特征map是上一层提取到的特征map的不同组合（这个做法也并不是唯一的）。（看到没有，这里是组合，就像之前聊到的人的视觉系统一样，底层的结构构成上层更抽象的结构，例如边缘构成形状或者目标的部分）。</p>
+
+<p><img src="/img/blog/20160914/9.png" alt="LeNet-5" /></p>
+
+<p>刚才说C3中每个特征图由S2中所有6个或者几个特征map组合而成。为什么不把S2中的每个特征图连接到每个C3的特征图呢？原因有2点。第一，不完全的连接机制将连接的数量保持在合理的范围内。第二，也是最重要的，其破坏了网络的对称性。由于不同的特征图有不同的输入，所以迫使他们抽取不同的特征（希望是互补的）。</p>
+
+<p>例如，存在的一个方式是：C3的前6个特征图以S2中3个相邻的特征图子集为输入。接下来6个特征图以S2中4个相邻特征图子集为输入。然后的3个以不相邻的4个特征图子集为输入。最后一个将S2中所有特征图为输入。这样C3层有1516个可训练参数和151600个连接。</p>
+
+<p><img src="/img/blog/20160914/10.png" alt="LeNet-5" /></p>
+
+<p>S4层是一个下采样层，由16个5<em>5大小的特征图构成。特征图中的每个单元与C3中相应特征图的2</em>2邻域相连接，跟C1和S2之间的连接一样。S4层有32个可训练参数（每个特征图1个因子和一个偏置）和2000个连接。</p>
+
+<p><img src="/img/blog/20160914/11.png" alt="LeNet-5" /></p>
+
+<p>C5层是一个卷积层，有120个特征图。每个单元与S4层的全部16个单元的5<em>5邻域相连。由于S4层特征图的大小也为5</em>5（同滤波器一样），故C5特征图的大小为1<em>1：这构成了S4和C5之间的全连接。之所以仍将C5标示为卷积层而非全相联层，是因为如果LeNet-5的输入变大，而其他的保持不变，那么此时特征图的维数就会比1</em>1大。C5层有48120个可训练连接。</p>
+
+<p><img src="/img/blog/20160914/12.png" alt="LeNet-5" /></p>
+
+<p>F6层有84个单元（之所以选这个数字的原因来自于输出层的设计），与C5层全相连。有10164个可训练参数。如同经典神经网络，F6层计算输入向量和权重向量之间的点积，再加上一个偏置。然后将其传递给sigmoid函数产生单元i的一个状态。</p>
+
+<p><img src="/img/blog/20160914/13.png" alt="LeNet-5" /></p>
+
+<p>最后，输出层由欧式径向基函数（Euclidean Radial Basis Function）单元组成，每类一个单元，每个有84个输入。换句话说，每个输出RBF单元计算输入向量和参数向量之间的欧式距离。输入离参数向量越远，RBF输出的越大。一个RBF输出可以被理解为衡量输入模式和与RBF相关联类的一个模型的匹配程度的惩罚项。用概率术语来说，RBF输出可以被理解为F6层配置空间的高斯分布的负log-likelihood。给定一个输入模式，损失函数应能使得F6的配置与RBF参数向量（即模式的期望分类）足够接近。这些单元的参数是人工选取并保持固定的（至少初始时候如此）。这些参数向量的成分被设为-1或1。虽然这些参数可以以-1和1等概率的方式任选，或者构成一个纠错码，但是被设计成一个相应字符类的7*12大小（即84）的格式化图片。这种表示对识别单独的数字不是很有用，但是对识别可打印ASCII集中的字符串很有用。</p>
+
+<p>使用这种分布编码而非更常用的“1 of N”编码用于产生输出的另一个原因是，当类别比较大的时候，非分布编码的效果比较差。原因是大多数时间非分布编码的输出必须为0。这使得用sigmoid单元很难实现。另一个原因是分类器不仅用于识别字母，也用于拒绝非字母。使用分布编码的RBF更适合该目标。因为与sigmoid不同，他们在输入空间的较好限制的区域内兴奋，而非典型模式更容易落到外边。</p>
+
+<p>RBF参数向量起着F6层目标向量的角色。需要指出这些向量的成分是+1或-1，这正好在F6 sigmoid的范围内，因此可以防止sigmoid函数饱和。实际上，+1和-1是sigmoid函数的最大弯曲的点处。这使得F6单元运行在最大非线性范围内。必须避免sigmoid函数的饱和，因为这将会导致损失函数较慢的收敛和病态问题。</p>
+
+</div>
+
+<div>
+	
+	<div class="eof"></div>
+	
+</div>
+
+<center>
+<div class="post-tags">
+
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">UTS</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">Sydney</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">CV</a>
+    
+
+</div>
+</center>
+
+<div class="post-recent">
+  
+    <p>上一篇
+    &nbsp;
+    
+    <i class="fa fa-file-archive-o" aria-hidden="true"></i>
+    
+    <a href="/computer%20vision/install-caffe.html">Caffe安装</a></p>
+  
+  
+    <p>下一篇
+      &nbsp;
+      
+      <i class="fa fa-file-archive-o" aria-hidden="true"></i>
+      
+      <a href="/computer%20vision/FCN.html">全卷积网络</a></p>
+  
+</div>
+
+<div class="share">
+    <p>Share this post with: </p>
+	<a href="https://twitter.com/intent/tweet?text=从神经网络到卷积神经网络的了解@liuyanfight&amp;url=https://liuyanfight.github.io/computer%20vision/CNN-CS231n.html" class="twitter-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://www.facebook.com/sharer/sharer.php?u=https://liuyanfight.github.io/computer%20vision/CNN-CS231n.html" class="facebook-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://plus.google.com/share?url=https://liuyanfight.github.io/computer%20vision/CNN-CS231n.html" class="googleplus-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+</div>
+
+
+<div id="disqus_thread"></div>
+
+
+<script type="text/javascript">
+	    /* * * CONFIGURATION VARIABLES * * */
+		var disqus_shortname = "liuyanfight";
+		var disqus_identifier = "/computer%20vision/CNN-CS231n";
+		var disqus_url = "https://liuyanfight.github.io/computer%20vision/CNN-CS231n.html";
+		(function() {
+			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+
+ 
+</div>
+
+
+</article>
+
+  </div>
+
+</body>
+
+<foot>
+
+    <foot>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Derictory -->
+
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
+
+<!-- Hit analytics -->
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- Directory -->
+
+<script src="/js/main.js"></script>
+
+</foot>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <center>
+
+		<p><a class="link" href="/archive/">Archive</a> /
+    <a class="link" href="/miniblog/">Miniblog</a> /
+    <a class="link" href="/calendar/">Calendar</a> /
+    <a class="link" href="/category/">Category</a> /
+		<a class="link" href="/tags/">Tags</a> /
+		<a class="link" href="/project/">Project</a> /
+    <a class="link" href="/about/">About</a>
+        </p>
+
+        <span><script>document.write(new Date().getFullYear());</script></span>
+        <span>&copy;</span>
+
+		<a class="link" href="">L</a>
+		<br>
+    </center>
+
+  </div>
+
+</footer>
+
+    
+</foot>
+
+</html>

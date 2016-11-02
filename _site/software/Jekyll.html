@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSS -->
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://liuyanfight.github.io/software/Jekyll.html">
+  <link rel="alternate" type="application/rss+xml" title="My Blog" href="https://liuyanfight.github.io/feed.xml">
+
+<!-- Google font -->
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto Sans">
+
+<!-- font awesome -->
+
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+
+<!-- 公式 -->
+<!-- <script type="text/javascript" async
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script> -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true,
+    processEnvironments: true
+  }
+});
+</script>
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+<!-- Google Analytics -->
+<!-- <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)
+     },i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-86494680-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+-->
+
+</head>
+
+
+  
+    <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+  ga('create', 'UA-86494680-1', 'auto');
+  ga('send', 'pageview');
+    
+	</script>
+
+
+  
+
+  
+
+  </head>
+
+  <body>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Centos7安装Jekyll</title>
+  <meta name="description" content="  想在服务器上安装Jekyll,同时发布到github.io上面。已经通过dropbox同步了liuyanfight.github.io文件，在服务器上写了脚本自动发布。如果服务器上安装好了Jekyll，就可以直接通过服务器来查看修改blog的配置与布局而不是频繁的push。">
+</head>
+
+
+  <div class="wrapper">
+          <header class="post-header">
+
+    <center><div class="post-title" itemprop="name headline">Centos7安装Jekyll</div>
+
+		<div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="2016/10/31 00:00:00 Monday" itemprop="datePublished">2016/10/31 Monday</time>
+
+		
+    <br />
+    
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <i class="fa fa-map-marker"></i>
+    <span>UTS Building 4</span>
+    
+		<!-- <br> -->
+		<!-- <i class="fa fa-eye"></i> <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-pulse"></i></span>˚C</span> -->
+	</div>
+
+    </center>
+
+</header>
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<div class="post-content">
+    <center>
+	
+    </center>
+	<h2>Directory</h2>
+</div>
+
+<div id="category"></div>
+
+<div class="post-content" itemprop="articleBody">
+    <blockquote>
+  <p>想在服务器上安装Jekyll,同时发布到github.io上面。已经通过dropbox同步了liuyanfight.github.io文件，在服务器上写了脚本自动发布。如果服务器上安装好了Jekyll，就可以直接通过服务器来查看修改blog的配置与布局而不是频繁的push。</p>
+</blockquote>
+
+<h2 id="githubio">自动发布github.io项目</h2>
+
+<p>在配置好git和github的情况下<br />
+在liuyanfight.github.io项目下，创建脚本<code class="highlighter-rouge">autopush.sh</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+<span class="c">#!/bin/bash</span>
+
+<span class="nb">cd</span> ~/Dropbox/liuyanfight.github.io
+git add .
+git commit -m <span class="s2">"autopush from L-Centos"</span>
+git push
+
+</code></pre>
+</div>
+
+<p>添加定时任务,每天三点自动执行。</p>
+
+<p><code class="highlighter-rouge">* 3 * * * /root/Dropbox/liuyanfight.github.io/autopush.sh
+</code></p>
+
+<h2 id="jekyll">配置jekyll</h2>
+
+<p>安装rvm https://devops.profitbricks.com/tutorials/install-ruby-214-with-rvm-on-centos/</p>
+
+<p><code class="highlighter-rouge">sudo yum -y install patch libyaml-devel libffi-devel glibc-headers autoconf gcc-c++ glibc-devel readline-devel zlib-devel openssl-devel bzip2 automake libtool bison</code></p>
+
+<p><code class="highlighter-rouge">gpg2 --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3</code></p>
+
+<p><code class="highlighter-rouge">curl -L get.rvm.io | bash -s stable</code></p>
+
+<p>安装rvm成功</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Installing RVM to /usr/local/rvm/
+Installation of RVM in /usr/local/rvm/ is almost complete:
+
+* First you need to add all users that will be using rvm to 'rvm' group,
+and logout - login again, anyone using rvm will be operating with `umask u=rwx,g=rwx,o=rx`.
+
+* To start using RVM you need to run `source /etc/profile.d/rvm.sh`
+in all your open shell windows, in rare cases you need to reopen all shell windows.
+
+# L-centos,
+#
+#   Thank you for using RVM!
+#   We sincerely hope that RVM helps to make your life easier and more enjoyable!!!
+#
+# ~Wayne, Michal &amp; team.
+
+In case of problems: https://rvm.io/help and https://twitter.com/rvm_io
+
+</code></pre>
+</div>
+
+<p>rvm一直显示安装未成功。执行以下命令</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 设置一下环境变量，下面要用到
+PATH=$PATH:/usr/local/rvm/bin:/usr/local/rvm/rubies/ruby-2.3.0/bin
+</code></pre>
+</div>
+
+<h2 id="lsudoer">给用户L,加入sudoer</h2>
+
+<p>sudo的作用就是使当前非root用户在使用没有权限的命令 时，直接在命令前加入sudo，在输入自己当前用户的密码就可以完成root用户的功能，而不必在每次使用su -来回切换用户了。sudo的配置文件位于/etc/sudoers，需要root权限才可以读写。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>vim /etc/sudoers
+
+找到root ALL=(ALL) ALL这一行，在后面再加上一行就可以了（不用引号）：
+L ALL=(ALL) ALL
+其中username为指定的使用sudo的用户，引号内的空格为tab
+如果你想每次使用sudo命令的时候都提示你输入根密码，移动到这一行：
+#%wheel ALL=(ALL) ALL
+解除#号注释
+如果你不想每次使用sudo命令的时候都提示你输入跟密码，移动到下面这一行：
+#%wheel ALL=(ALL)NOPASSWD:ALL
+解除#号注释
+保存后退出
+
+添加用户名到wheel用户组：
+usermod -G wheel username
+</code></pre>
+</div>
+<p>user: L
+pwd:pwd.</p>
+
+<p>发现自己一开始就一直使用root权限，导致文件都只有root用户才可以编辑。尴尬。</p>
+
+<p>一直安装jekyll失败。</p>
+
+</div>
+
+<div>
+	
+	<div class="eof"></div>
+	
+</div>
+
+<center>
+<div class="post-tags">
+
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">Software</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">Server</a>
+    
+
+</div>
+</center>
+
+<div class="post-recent">
+  
+    <p>上一篇
+    &nbsp;
+    
+    <i class="fa fa-comment-o" aria-hidden="true"></i>111111
+    
+    <a href="/miniblog/19-52.html">2016-10-31 19:52</a></p>
+  
+  
+    <p>下一篇
+      &nbsp;
+      
+      <i class="fa fa-file-archive-o" aria-hidden="true"></i>
+      
+      <a href="/software/centos-vim.html">Centos安装VIM</a></p>
+  
+</div>
+
+<div class="share">
+    <p>Share this post with: </p>
+	<a href="https://twitter.com/intent/tweet?text=Centos7安装Jekyll@liuyanfight&amp;url=https://liuyanfight.github.io/software/Jekyll.html" class="twitter-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://www.facebook.com/sharer/sharer.php?u=https://liuyanfight.github.io/software/Jekyll.html" class="facebook-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://plus.google.com/share?url=https://liuyanfight.github.io/software/Jekyll.html" class="googleplus-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+</div>
+
+
+<div id="disqus_thread"></div>
+
+
+<script type="text/javascript">
+	    /* * * CONFIGURATION VARIABLES * * */
+		var disqus_shortname = "liuyanfight";
+		var disqus_identifier = "/software/Jekyll";
+		var disqus_url = "https://liuyanfight.github.io/software/Jekyll.html";
+		(function() {
+			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+
+ 
+</div>
+
+
+</article>
+
+  </div>
+
+</body>
+
+<foot>
+
+    <foot>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Derictory -->
+
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
+
+<!-- Hit analytics -->
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- Directory -->
+
+<script src="/js/main.js"></script>
+
+</foot>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <center>
+
+		<p><a class="link" href="/archive/">Archive</a> /
+    <a class="link" href="/miniblog/">Miniblog</a> /
+    <a class="link" href="/calendar/">Calendar</a> /
+    <a class="link" href="/category/">Category</a> /
+		<a class="link" href="/tags/">Tags</a> /
+		<a class="link" href="/project/">Project</a> /
+    <a class="link" href="/about/">About</a>
+        </p>
+
+        <span><script>document.write(new Date().getFullYear());</script></span>
+        <span>&copy;</span>
+
+		<a class="link" href="">L</a>
+		<br>
+    </center>
+
+  </div>
+
+</footer>
+
+    
+</foot>
+
+</html>

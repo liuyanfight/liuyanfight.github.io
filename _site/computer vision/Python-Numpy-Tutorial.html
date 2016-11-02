@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSS -->
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://liuyanfight.github.io/computer%20vision/Python-Numpy-Tutorial.html">
+  <link rel="alternate" type="application/rss+xml" title="My Blog" href="https://liuyanfight.github.io/feed.xml">
+
+<!-- Google font -->
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto Sans">
+
+<!-- font awesome -->
+
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+
+<!-- 公式 -->
+<!-- <script type="text/javascript" async
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script> -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true,
+    processEnvironments: true
+  }
+});
+</script>
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+<!-- Google Analytics -->
+<!-- <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)
+     },i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-86494680-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+-->
+
+</head>
+
+
+  
+    <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+  ga('create', 'UA-86494680-1', 'auto');
+  ga('send', 'pageview');
+    
+	</script>
+
+
+  
+
+  
+
+  </head>
+
+  <body>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Python Numpy Tutorial</title>
+  <meta name="description" content="  These notes accompany the Stanford CS class CS231n: Convolutional Neural Networks for Visual Recognition.  Numpy有Matlab版。Python  Python is a high-level, dy...">
+</head>
+
+
+  <div class="wrapper">
+          <header class="post-header">
+
+    <center><div class="post-title" itemprop="name headline">Python Numpy Tutorial</div>
+
+		<div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="2016/09/05 00:00:00 Monday" itemprop="datePublished">2016/09/05 Monday</time>
+
+		&nbsp;&nbsp;•&nbsp;&nbsp;<i class="fa fa-user-secret"></i> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">page.author</span>
+    
+    <br />
+    
+		<!-- <br> -->
+		<!-- <i class="fa fa-eye"></i> <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-pulse"></i></span>˚C</span> -->
+	</div>
+
+    </center>
+
+</header>
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<div class="post-content">
+    <center>
+	
+	<p>Computer Vision Software</p>
+	
+    </center>
+	<h2>Directory</h2>
+</div>
+
+<div id="category"></div>
+
+<div class="post-content" itemprop="articleBody">
+    <blockquote>
+  <p>These notes accompany the Stanford CS class CS231n: Convolutional Neural Networks for Visual Recognition.</p>
+</blockquote>
+
+<ul>
+  <li>Numpy有Matlab版。</li>
+</ul>
+
+<h2 id="python">Python</h2>
+<ul>
+  <li>Python is a high-level, dynamically typed multiparadigm programming language.</li>
+</ul>
+
+<h3 id="basic-data-typeshttpsdocspythonorg2librarystdtypeshtmlnumeric-types-int-float-long-complex"><a href="https://docs.python.org/2/library/stdtypes.html#numeric-types-int-float-long-complex">Basic data types</a></h3>
+<ul>
+  <li><strong>Numbers</strong>
+    <ul>
+      <li><code class="highlighter-rouge">type()</code>显示字符类型</li>
+      <li>没有  ++ 和 –</li>
+    </ul>
+  </li>
+  <li><strong>Booleans</strong>
+    <ul>
+      <li>使用 <code class="highlighter-rouge">and or not</code>而不是&amp;&amp; ! 等</li>
+    </ul>
+  </li>
+  <li><a href="https://docs.python.org/2/library/stdtypes.html#string-methods"><strong>Strings</strong></a>
+    <ul>
+      <li>可以使用单引号或双引号</li>
+      <li><code class="highlighter-rouge">len()</code>显示字符串长度</li>
+      <li>使用 <code class="highlighter-rouge">+</code> 用于字符串拼接</li>
+      <li><code class="highlighter-rouge">hw12 = '%s %s %d' % (hello, world, 12)</code> 字符串格式化</li>
+      <li>
+        <p>String类型有很多方法</p>
+
+        <div class="highlighter-rouge"><pre class="highlight"><code>s = "hello"
+print s.capitalize() # Capitalize a string; prints "Hello"
+print s.upper() # Convert a string to uppercase; prints "HELLO"
+print s.rjust(7) # Right-justify a string, padding with spaces; prints
+print s.center(7) # Center a string, padding with spaces; prints " hello
+print s.replace('l', '(ell)') # Replace all instances of one substring with
+# prints "he(ell)(ell)o"
+print ' world '.strip() # Strip leading and trailing whitespace; pr
+</code></pre>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="containers">Containers</h3>
+<ul>
+  <li>包含Lists，Dictionaries，settings，Tuples 几种类型</li>
+</ul>
+
+<h4 id="listshttpsdocspythonorg2tutorialdatastructureshtmlmore-on-lists"><a href="https://docs.python.org/2/tutorial/datastructures.html#more-on-lists">Lists</a></h4>
+<ul>
+  <li><code class="highlighter-rouge">xs=[3,1,2]</code>创建list</li>
+  <li>list可以包含不同类型的元素</li>
+  <li>list可以出栈和进栈操作</li>
+  <li>
+    <p><strong>Slicing</strong></p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>nums = range(5) # range is a built-in function that creates a list of int
+print nums # Prints "[0, 1, 2, 3, 4]"
+print nums[2:4] # Get a slice from index 2 to 4 (exclusive); prints "[2,3]" 不包括第4个
+print nums[2:] # Get a slice from index 2 to the end; prints "[2, 3, 4]
+print nums[:2] # Get a slice from the start to index 2 (exclusive); prints "[0, 1]"
+print nums[:] # Get a slice of the whole list; prints ["0, 1, 2, 3, 4]
+print nums[:-1] # Slice indices can be negative; prints ["0, 1, 2, 3]"
+nums[2:4] = [8, 9] # Assign a new sublist to a slice
+print nums # Prints "[0, 1, 8, 9, 4]"
+</code></pre>
+    </div>
+  </li>
+  <li><strong>Loops</strong>
+    <ul>
+      <li><code class="highlighter-rouge">for ... in ... ：</code></li>
+      <li>枚举遍历列表<code class="highlighter-rouge">for ... in enumerate(...)：</code></li>
+    </ul>
+  </li>
+  <li>
+    <p>List comprehensions:变换类型</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>nums = [0, 1, 2, 3, 4]
+squares = []
+for x in nums:
+  squares.append(x ** 2)
+# or
+squares = [x ** 2 for x in nums]
+# 包含条件
+even_squares = [x ** 2 for x in nums if x % 2 == 0]
+print squares # Prints [0, 1, 4, 9, 16]
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<h4 id="dictionarieshttpsdocspythonorg2librarystdtypeshtmldict"><a href="https://docs.python.org/2/library/stdtypes.html#dict">Dictionaries</a></h4>
+<ul>
+  <li>dictionary保存一对(key, value).</li>
+  <li>
+    <p><strong>Loops:</strong></p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>d = {'person': 2, 'cat': 4, 'spider': 8}
+for animal in d:
+  legs = d[animal]
+  print 'A %s has %d legs' % (animal, legs)
+# Prints "A person has 2 legs", "A spider has 8 legs",
+# "A cat has 4 legs
+
+# or use `iteritems`
+d = {'person': 2, 'cat': 4, 'spider': 8}
+for animal, legs in d.iteritems():
+  print 'A %s has %d legs' % (animal, legs)
+# Prints "A person has 2 legs", "A spider has 8 legs",
+# "A cat has 4 legs
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<h4 id="setshttpsdocspythonorg2librarysetshtmlset-objects"><a href="https://docs.python.org/2/library/sets.html#set-objects">Sets</a></h4>
+<ul>
+  <li>a set is an unordered collection of distinct elements.无序的</li>
+</ul>
+
+<h4 id="tupleshttpsdocspythonorg2tutorialdatastructureshtmltuples-and-sequences"><a href="https://docs.python.org/2/tutorial/datastructures.html#tuples-and-sequences">Tuples</a></h4>
+<ul>
+  <li>A tuple is an (immutable不变的) ordered list of values.</li>
+</ul>
+
+<h3 id="functionshttpsdocspythonorg2tutorialcontrolflowhtmldefining-functions">[Functions]https://docs.python.org/2/tutorial/controlflow.html#defining-functions</h3>
+<ul>
+  <li><code class="highlighter-rouge">def</code> 定义函数</li>
+</ul>
+
+<h3 id="classeshttpsdocspythonorg2tutorialclasseshtml"><a href="https://docs.python.org/2/tutorial/classes.html">Classes</a></h3>
+<ul>
+  <li><code class="highlighter-rouge">class ...():</code></li>
+</ul>
+
+<h2 id="numpy">Numpy</h2>
+<ul>
+  <li>Numpy is the core library for scientiAc computing in Python.</li>
+  <li>Numpy的安装时需要源文件编译，若使用<strong>Anaconda</strong>则可以直接使用~</li>
+</ul>
+
+<h3 id="arrayshttpdocsscipyorgdocnumpyuserbasicscreationhtmlarrays-creation"><a href="http://docs.scipy.org/doc/numpy/user/basics.creation.html#arrays-creation">Arrays</a></h3>
+<ul>
+  <li>A numpy array is a grid of values.相同类型</li>
+  <li>The number of dimensions is the rank of the array;</li>
+  <li>the shape of an array is a tuple of integers giving the size of the array along each dimension.</li>
+  <li><code class="highlighter-rouge">import numpy as </code>导入包</li>
+</ul>
+
+<h3 id="array-indexinghttpdocsscipyorgdocnumpyreferencearraysindexinghtml"><a href="http://docs.scipy.org/doc/numpy/reference/arrays.indexing.html">Array indexing</a></h3>
+<ul>
+  <li><strong>Slicing</strong>
+    <ul>
+      <li><code class="highlighter-rouge">b = a[:2, 1:3]</code> 前两行，第2，3列。</li>
+      <li>索引从0开始</li>
+      <li>序号不包含后一个</li>
+      <li>矩阵处理有点像matlab</li>
+    </ul>
+  </li>
+  <li><strong>Integer array indexng</strong> 数组索引</li>
+  <li><strong>Boolean array indexing</strong> 判断数组条件</li>
+</ul>
+
+<h3 id="datatypeshttpdocsscipyorgdocnumpyreferencearraysdtypeshtml"><a href="http://docs.scipy.org/doc/numpy/reference/arrays.dtypes.html">Datatypes</a></h3>
+<ul>
+  <li>Every numpy array is a grid of elements of the same type.</li>
+  <li>可以强制定义类型</li>
+</ul>
+
+<h3 id="array-math">Array math</h3>
+<ul>
+  <li>基本的数学操作是可以在array上使用的，也可以使用方法（函数）
+    <ul>
+      <li><code class="highlighter-rouge">+</code> np.add()</li>
+      <li><code class="highlighter-rouge">-</code> np.subtract()</li>
+      <li><code class="highlighter-rouge">*</code> np.multiply() 元素乘</li>
+      <li><code class="highlighter-rouge">/</code> np.divide()</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">dot</code>函数用来矩阵相乘，两种形式v.dot(w), np.dot(v,w)</li>
+  <li><code class="highlighter-rouge">np.sum</code> 函数计算和。<code class="highlighter-rouge">np.sum(x, axis=0)</code> 列相加，axis=1行相加。没有则是全部相加。</li>
+  <li>更多函数见 http://docs.scipy.org/doc/numpy/reference/routines.math.html</li>
+  <li><code class="highlighter-rouge">x.T</code>转置矩阵x。 rank=1的数组不做任何变化。</li>
+  <li>更多对array的操作见 http://docs.scipy.org/doc/numpy/reference/routines.array-manipulation.html</li>
+</ul>
+
+<h3 id="broadcasting">Broadcasting</h3>
+<ul>
+  <li><code class="highlighter-rouge">np.tile(v,(4,1))</code> stack 4 copies of v on top of each other</li>
+  <li>
+    <p>Numpy broadcasting allows us to perform this computation without actually creating multiple copies of <code class="highlighter-rouge">v</code>.</p>
+
+    <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="c"># We will add the vector v to each row of the matrix x,</span>
+<span class="c"># storing the result in the matrix y</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]])</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">v</span> <span class="c"># Add v to each row of x using broadcasting</span>
+<span class="k">print</span> <span class="n">y</span> <span class="c"># Prints "[[ 2 2 4]</span>
+<span class="c"># [ 5 5 7]</span>
+<span class="c"># [ 8 8 10]</span>
+<span class="c"># [11 11 13]]"</span>
+
+<span class="c"># y = x + v 此公式依然有效，当x是4*3矩阵而v是3*1矩阵</span>
+</code></pre>
+    </div>
+  </li>
+  <li>广播(broadcasting)两个array遵循以下规则
+    <ol>
+      <li>如果array没有相同的rank，可以用1填充地址array知道两个array有相同的长度</li>
+      <li>如果两个array在同一维度有相同的大小或者其中一个array在该维度为1，则可以直接进行操作</li>
+      <li>如果arrays在所有维度都兼容可以一起广播</li>
+      <li>广播后的每个array等于最大的那个array</li>
+      <li>在任意维度，当其中一个大小为1而其他array大于1，那么前一个array填充为相同大小
+        <ul>
+          <li>详见 http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html</li>
+          <li>或 http://scipy.github.io/old-wiki/pages/EricsBroadcastingDoc</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="c"># Compute outer product of vectors</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span> <span class="c"># v has shape (3,)</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span> <span class="c"># w has shape (2,)</span>
+<span class="c"># To compute an outer product, we first reshape v to be a column</span>
+<span class="c"># vector of shape (3, 1); we can then broadcast it against w to yield</span>
+<span class="c"># an output of shape (3, 2), which is the outer product of v and w:</span>
+<span class="c"># [[ 4 5]</span>
+<span class="c"># [ 8 10]</span>
+<span class="c"># [12 15]]</span>
+<span class="k">print</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">w</span>
+<span class="c"># Add a vector to each row of a matrix</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+<span class="c"># x has shape (2, 3) and v has shape (3,) so they broadcast to (2, 3),</span>
+<span class="c"># giving the following matrix:</span>
+<span class="c"># [[2 4 6]</span>
+<span class="c"># [5 7 9]]</span>
+<span class="k">print</span> <span class="n">x</span> <span class="o">+</span> <span class="n">v</span>
+<span class="c"># Add a vector to each column of a matrix</span>
+<span class="c"># x has shape (2, 3) and w has shape (2,).</span>
+<span class="c"># If we transpose x then it has shape (3, 2) and can be broadcast</span>
+<span class="c"># against w to yield a result of shape (3, 2); transposing this result</span>
+<span class="c"># yields the final result of shape (2, 3) which is the matrix x with</span>
+<span class="c"># the vector w added to each column. Gives the following matrix:</span>
+<span class="c"># [[ 5 6 7]</span>
+<span class="c"># [ 9 10 11]]</span>
+<span class="k">print</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="c"># Another solution is to reshape w to be a row vector of shape (2, 1);</span>
+<span class="c"># we can then broadcast it directly against x to produce the same</span>
+<span class="c"># output.</span>
+<span class="k">print</span> <span class="n">x</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="c"># Multiply a matrix by a constant:</span>
+<span class="c"># x has shape (2, 3). Numpy treats scalars as arrays of shape ();</span>
+<span class="c"># these can be broadcast together to shape (2, 3), producing the</span>
+<span class="c"># following array:</span>
+<span class="c"># [[ 2 4 6]</span>
+<span class="c"># [ 8 10 12]]</span>
+<span class="k">print</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+</code></pre>
+</div>
+<ul>
+  <li><a href="http://docs.scipy.org/doc/numpy/reference/">More about Numpy</a></li>
+</ul>
+
+<h2 id="scipyhttpdocsscipyorgdocscipyreferenceindexhtml"><a href="http://docs.scipy.org/doc/scipy/reference/index.html">SciPy</a></h2>
+<ul>
+  <li>SciPy builds on Numpy’s function, and provides a large number of functions that operate on numpy arrays and are useful for different types of scientific and engineering applications.</li>
+</ul>
+
+<h3 id="image-operations">Image operations</h3>
+<ul>
+  <li>SciPy可以导入一个image到numpy arrays，并且可以write,resize等等。</li>
+  <li><code class="highlighter-rouge">from scipy.misc import imread, imsave, imresize</code></li>
+  <li><code class="highlighter-rouge">imread</code>读入图片</li>
+  <li><code class="highlighter-rouge">imresize</code>resize图片</li>
+  <li><code class="highlighter-rouge">imsave</code>将图片保存到本地</li>
+</ul>
+
+<h3 id="matlab-aleshttpdocsscipyorgdocscipyreferenceiohtml"><a href="http://docs.scipy.org/doc/scipy/reference/io.html">MATLAB Ales</a></h3>
+<ul>
+  <li><code class="highlighter-rouge">scipy.io.loadmat</code>和<code class="highlighter-rouge">scipy.io.savemat</code>可以读写Matlab文件</li>
+</ul>
+
+<h3 id="distance-between-points">Distance between points</h3>
+<ul>
+  <li><code class="highlighter-rouge">scipy.spatial.distance.pdist</code>计算一个给定数据集中所有点的距离</li>
+  <li>http://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.pdist.html</li>
+  <li><code class="highlighter-rouge">scipy.spatial.distance.cdist</code>计算两个数据集之间的距离</li>
+  <li>http://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.cdist.html</li>
+</ul>
+
+<h2 id="matplotlib">Matplotlib</h2>
+<ul>
+  <li>画图的库，与Matlab相似</li>
+</ul>
+
+<h3 id="plottinghttpmatplotliborgapipyplotapihtmlmatplotlibpyplotplot"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot">Plotting</a></h3>
+<ul>
+  <li><code class="highlighter-rouge">import matplotlib.pyplot as plt</code></li>
+  <li><code class="highlighter-rouge">plt.plot</code> 作图</li>
+  <li><code class="highlighter-rouge">plt.show</code> 显示图像</li>
+</ul>
+
+<h3 id="subplots">Subplots</h3>
+<ul>
+  <li><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.subplot">子图</a></li>
+</ul>
+
+<h3 id="images">Images</h3>
+<ul>
+  <li><code class="highlighter-rouge">imshow</code>显示图像</li>
+  <li>有些图像不是uint8格式可能会导致图像效果不好，这时，可以强制给定uint8来显示。<code class="highlighter-rouge">plt.imshow(np.uint8(img_tinted))</code></li>
+</ul>
+
+<h2 id="finished-at-2016-09-06-1818-sydney">Finished at 2016-09-06 18:18 Sydney</h2>
+
+</div>
+
+<div>
+	
+	<div class="eof"></div>
+	
+</div>
+
+<center>
+<div class="post-tags">
+
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">ML</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">学习</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">CV</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">DL</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">Python</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">Sydney</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">UTS</a>
+    
+
+</div>
+</center>
+
+<div class="post-recent">
+  
+    <p>上一篇
+    &nbsp;
+    
+    <i class="fa fa-file-archive-o" aria-hidden="true"></i>
+    
+    <a href="/machine%20learning/Machine-Learning-Nanodegree-titanic_survival_exploration.html">机器学习工程师纳米学位</a></p>
+  
+  
+    <p>下一篇
+      &nbsp;
+      
+      <i class="fa fa-file-archive-o" aria-hidden="true"></i>
+      
+      <a href="/everyday/Diary.html">日记20160907</a></p>
+  
+</div>
+
+<div class="share">
+    <p>Share this post with: </p>
+	<a href="https://twitter.com/intent/tweet?text=Python Numpy Tutorial@liuyanfight&amp;url=https://liuyanfight.github.io/computer%20vision/Python-Numpy-Tutorial.html" class="twitter-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://www.facebook.com/sharer/sharer.php?u=https://liuyanfight.github.io/computer%20vision/Python-Numpy-Tutorial.html" class="facebook-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://plus.google.com/share?url=https://liuyanfight.github.io/computer%20vision/Python-Numpy-Tutorial.html" class="googleplus-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+</div>
+
+
+<div id="disqus_thread"></div>
+
+
+<script type="text/javascript">
+	    /* * * CONFIGURATION VARIABLES * * */
+		var disqus_shortname = "liuyanfight";
+		var disqus_identifier = "/computer%20vision/Python-Numpy-Tutorial";
+		var disqus_url = "https://liuyanfight.github.io/computer%20vision/Python-Numpy-Tutorial.html";
+		(function() {
+			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+
+ 
+</div>
+
+
+</article>
+
+  </div>
+
+</body>
+
+<foot>
+
+    <foot>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Derictory -->
+
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
+
+<!-- Hit analytics -->
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- Directory -->
+
+<script src="/js/main.js"></script>
+
+</foot>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <center>
+
+		<p><a class="link" href="/archive/">Archive</a> /
+    <a class="link" href="/miniblog/">Miniblog</a> /
+    <a class="link" href="/calendar/">Calendar</a> /
+    <a class="link" href="/category/">Category</a> /
+		<a class="link" href="/tags/">Tags</a> /
+		<a class="link" href="/project/">Project</a> /
+    <a class="link" href="/about/">About</a>
+        </p>
+
+        <span><script>document.write(new Date().getFullYear());</script></span>
+        <span>&copy;</span>
+
+		<a class="link" href="">L</a>
+		<br>
+    </center>
+
+  </div>
+
+</footer>
+
+    
+</foot>
+
+</html>

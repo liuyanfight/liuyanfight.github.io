@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSS -->
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://liuyanfight.github.io/software/shadowsocks.html">
+  <link rel="alternate" type="application/rss+xml" title="My Blog" href="https://liuyanfight.github.io/feed.xml">
+
+<!-- Google font -->
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto Sans">
+
+<!-- font awesome -->
+
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+
+<!-- 公式 -->
+<!-- <script type="text/javascript" async
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script> -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true,
+    processEnvironments: true
+  }
+});
+</script>
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+<!-- Google Analytics -->
+<!-- <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)
+     },i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-86494680-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+-->
+
+</head>
+
+
+  
+    <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+  ga('create', 'UA-86494680-1', 'auto');
+  ga('send', 'pageview');
+    
+	</script>
+
+
+  
+
+  
+
+  </head>
+
+  <body>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>重新配置服务器中shadowsocks</title>
+  <meta name="description" content="Digtalocean中剩余的30多刀coupon突然说到期了，简直崩溃，本来可以用到明年8月的，还好在网上搜到可以尝试提问要回来，客服果然同意了，不过说有效期只有一年，绝对够用了，真心考虑以后每个月续租的问题，一个月5刀，30多块钱完全可以接受。不过如果在UTS的服务器回国后可以继续用就更好了。服务器中的sha...">
+</head>
+
+
+  <div class="wrapper">
+          <header class="post-header">
+
+    <center><div class="post-title" itemprop="name headline">重新配置服务器中shadowsocks</div>
+
+		<div class="post-meta"><i class="fa fa-calendar-o"></i> <time datetime="2016/10/27 00:00:00 Thursday" itemprop="datePublished">2016/10/27 Thursday</time>
+
+		
+    <br />
+    
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <i class="fa fa-map-marker"></i>
+    <span>UTS Library</span>
+    
+		<!-- <br> -->
+		<!-- <i class="fa fa-eye"></i> <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-pulse"></i></span>˚C</span> -->
+	</div>
+
+    </center>
+
+</header>
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<div class="post-content">
+    <center>
+	
+    </center>
+	<h2>Directory</h2>
+</div>
+
+<div id="category"></div>
+
+<div class="post-content" itemprop="articleBody">
+    <p>Digtalocean中剩余的30多刀coupon突然说到期了，简直崩溃，本来可以用到明年8月的，还好在网上搜到可以尝试提问要回来，客服果然同意了，不过说有效期只有一年，绝对够用了，真心考虑以后每个月续租的问题，一个月5刀，30多块钱完全可以接受。不过如果在UTS的服务器回国后可以继续用就更好了。</p>
+
+<p>服务器中的shadowsocks不知道为何失效了，重新配置一下。<br />
+参考 https://shadowsocks.be/9.html</p>
+
+<p>配置成功。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Congratulations, ShadowsocksR install completed!
+Server IP:  107.170.209.4
+Server Port:  8080
+Password:  pwd....
+Local IP:  127.0.0.1
+Local Port:  1080
+Protocol:  origin
+obfs:  plain
+Encryption Method:  aes-256-cfb
+</code></pre>
+</div>
+
+<p>为防止出现上次那种网页失效，不知道以前怎么配置的尴尬事件，记录如下：</p>
+
+<p><strong>关于本脚本：</strong><br />
+一键安装 ShadowsocksR 服务端。<br />
+请下载与之配套的客户端程序来连接。<br />
+（以下客户端只有 Windows 客户端和 Python 版客户端可以使用 SSR 新特性，其他原版客户端只能以兼容的方式连接 SSR 服务器）</p>
+
+<p><strong>默认配置：</strong><br />
+服务器端口：自己设定（如不设定，默认为 8989）<br />
+客户端端口：1080<br />
+密码：自己设定（如不设定，默认为teddysun.com）</p>
+
+<p><strong>客户端下载：</strong><br />
+<a href="https://github.com/breakwa11/shadowsocks-csharp/releases">Windows</a> / <a href="https://github.com/shadowsocks/shadowsocks-iOS/wiki/Shadowsocks-for-OSX-Help">OS X</a><br />
+<a href="https://github.com/shadowsocks/shadowsocks-qt5">Linux</a><br />
+<a href="https://github.com/shadowsocks/shadowsocks-android">Android</a> / <a href="https://github.com/shadowsocks/shadowsocks-iOS/wiki/Help">iOS</a><br />
+<a href="https://github.com/shadowsocks/openwrt-shadowsocks">OpenWRT</a></p>
+
+<p><strong>使用方法：</strong><br />
+使用root用户登录，运行以下命令：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh
+chmod +x shadowsocksR.sh
+./shadowsocksR.sh 2&gt;&amp;1 | tee shadowsocksR.log
+</code></pre>
+</div>
+
+<p><strong>卸载方法：</strong><br />
+使用 root 用户登录，运行以下命令：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>./shadowsocksR.sh uninstall
+</code></pre>
+</div>
+
+<p>安装完成后即已后台启动 ShadowsocksR ，运行：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/etc/init.d/shadowsocks status
+</code></pre>
+</div>
+
+<p>可以查看 ShadowsocksR 进程是否已经启动。<br />
+本脚本安装完成后，已将 ShadowsocksR 自动加入开机自启动。</p>
+
+<p><strong>使用命令：</strong><br />
+启动：/etc/init.d/shadowsocks start<br />
+停止：/etc/init.d/shadowsocks stop<br />
+重启：/etc/init.d/shadowsocks restart<br />
+状态：/etc/init.d/shadowsocks status</p>
+
+<p>配置文件路径：/etc/shadowsocks.json<br />
+日志文件路径：/var/log/shadowsocks.log<br />
+代码安装目录：/usr/local/shadowsock</p>
+
+<p><strong>多用户配置 sample：</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"server"</span><span class="p">:</span><span class="s2">"0.0.0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"server_ipv6"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[::]"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"local_address"</span><span class="p">:</span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"local_port"</span><span class="p">:</span><span class="mi">1080</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"port_password"</span><span class="p">:{</span><span class="w">
+            </span><span class="nt">"8989"</span><span class="p">:</span><span class="s2">"password1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"8990"</span><span class="p">:</span><span class="s2">"password2"</span><span class="err">，</span><span class="w">
+            </span><span class="s2">"8991"</span><span class="err">:</span><span class="s2">"password3"</span><span class="w">
+
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"timeout"</span><span class="p">:</span><span class="mi">300</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"method"</span><span class="p">:</span><span class="s2">"aes-256-cfb"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"origin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"protocol_param"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"obfs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"plain"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"obfs_param"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"redirect"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"dns_ipv6"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fast_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"workers"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>按照这个网址 https://shadowsocks.be/6.html 安装了定时任务脚本</p>
+
+</div>
+
+<div>
+	
+	<div class="eof"></div>
+	
+</div>
+
+<center>
+<div class="post-tags">
+
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">Software</a>
+    
+  <a class="post-tags-item" href="https://liuyanfight.github.io/tags/">Server</a>
+    
+
+</div>
+</center>
+
+<div class="post-recent">
+  
+    <p>上一篇
+    &nbsp;
+    
+    <i class="fa fa-comment-o" aria-hidden="true"></i>111111
+    
+    <a href="/miniblog/10-45.html">2016-10-27 10:45</a></p>
+  
+  
+    <p>下一篇
+      &nbsp;
+      
+      <i class="fa fa-comment-o" aria-hidden="true"></i>
+      
+      <a href="/miniblog/11-32.html">2016-10-28 11:32</a></p>
+  
+</div>
+
+<div class="share">
+    <p>Share this post with: </p>
+	<a href="https://twitter.com/intent/tweet?text=重新配置服务器中shadowsocks@liuyanfight&amp;url=https://liuyanfight.github.io/software/shadowsocks.html" class="twitter-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://www.facebook.com/sharer/sharer.php?u=https://liuyanfight.github.io/software/shadowsocks.html" class="facebook-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+    
+	<a href="https://plus.google.com/share?url=https://liuyanfight.github.io/software/shadowsocks.html" class="googleplus-share">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
+</div>
+
+
+<div id="disqus_thread"></div>
+
+
+<script type="text/javascript">
+	    /* * * CONFIGURATION VARIABLES * * */
+		var disqus_shortname = "liuyanfight";
+		var disqus_identifier = "/software/shadowsocks";
+		var disqus_url = "https://liuyanfight.github.io/software/shadowsocks.html";
+		(function() {
+			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+
+ 
+</div>
+
+
+</article>
+
+  </div>
+
+</body>
+
+<foot>
+
+    <foot>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Derictory -->
+
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
+
+<!-- Hit analytics -->
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- Directory -->
+
+<script src="/js/main.js"></script>
+
+</foot>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <center>
+
+		<p><a class="link" href="/archive/">Archive</a> /
+    <a class="link" href="/miniblog/">Miniblog</a> /
+    <a class="link" href="/calendar/">Calendar</a> /
+    <a class="link" href="/category/">Category</a> /
+		<a class="link" href="/tags/">Tags</a> /
+		<a class="link" href="/project/">Project</a> /
+    <a class="link" href="/about/">About</a>
+        </p>
+
+        <span><script>document.write(new Date().getFullYear());</script></span>
+        <span>&copy;</span>
+
+		<a class="link" href="">L</a>
+		<br>
+    </center>
+
+  </div>
+
+</footer>
+
+    
+</foot>
+
+</html>
