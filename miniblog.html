@@ -37,10 +37,9 @@ permalink: /miniblog/
 {% if this_year == next_year %}
 {% assign is_first = false %}
     {% if this_month == next_month %}
-    {% assign is_first = false %}
-    {% endif %}
+        {% assign is_first = false %}
     {% else %}
-    {% assign is_first = true %}
+        {% assign is_first = true %}
     {% endif %}
 {% else %}
 {% assign is_first = true %}
