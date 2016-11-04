@@ -7,6 +7,7 @@ permalink: /miniblog/
 
 
 {% assign is_first = true %}
+{% assign is_first_month = true %}
 {% for post in site.categories['miniblog'] %}
 
 {% capture this_year %}
@@ -19,7 +20,10 @@ permalink: /miniblog/
 
 {% if is_first  %}
 <h2 id="{{ this_year  }}-ref">{{ this_year }}</h2>
-<h3 id="{{ this_year }}-{{this_month}}-ref">{{this_month}}</h3>
+{% endif %}
+
+{% if is_first_month}
+<h3 id="{{ this_year }}-{{this_month}}-ref">{{this_month}} 月</h3>
 {% endif %}
 
 {% capture next_year %}
@@ -30,8 +34,14 @@ permalink: /miniblog/
 {{ post.previous.data | date:"%m" }}
 {% endcapture %}
 
-{% if this_year == next_year && this_month == next_month%}
+{% if this_year == next_year %}
 {% assign is_first = false %}
+    {% if this_month == next_month %}
+    {% assign is_first = false %}
+    {% endif %}
+    {% else %}
+    {% assign is_first = true %}
+    {% endif %}
 {% else %}
 {% assign is_first = true %}
 {% endif %}
