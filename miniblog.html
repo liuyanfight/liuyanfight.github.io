@@ -23,7 +23,9 @@ permalink: /miniblog/
 {% endif %}
 
 {% if is_first_month %}
+<div data-role="header">
 <h3 id="{{ this_year }}-{{this_month}}-ref">{{this_month}} 月</h3>
+</div>
 {% endif %}
 
 {% capture next_year %}
@@ -45,9 +47,14 @@ permalink: /miniblog/
 {% assign is_first = true %}
 {% endif %}
 
+
+<div data-role="content">
+    <div data-role="collapsible">
 <fieldset>
 <ul>
     <span class="date">
+      {{ post.content }}
+      <br />
       <i class="fa fa-comment-o" aria-hidden="true"></i>
       <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title}}</a>
       {% if post.location %}
@@ -56,10 +63,9 @@ permalink: /miniblog/
   			{{ post.location }}
   	  {% endif %}
     </span>
-    <br />
-    {{ post.content }}
 </ul>
 </fieldset>
+</div>
+</div>
 <br />
-
 {% endfor %}
