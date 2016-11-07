@@ -5,6 +5,8 @@ subtitle: 说说我的世界.
 permalink: /miniblog/
 ---
 
+<div class="wrapper">
+
 {% assign is_first = true %}
 {% assign is_first_month = true %}
 {% for post in site.categories['miniblog'] %}
@@ -47,8 +49,8 @@ permalink: /miniblog/
 
 <fieldset>
 <ul>
+    {{ post.content }}
     <span class="date">
-      {{ post.content }}
       <br />
       <i class="fa fa-comment-o" aria-hidden="true"></i>
       <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title}}</a>
@@ -62,3 +64,5 @@ permalink: /miniblog/
 </fieldset>
 <br />
 {% endfor %}
+
+</div>

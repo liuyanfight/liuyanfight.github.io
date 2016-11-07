@@ -133,7 +133,7 @@ $$
 ### 定性预测变量
 
 上面讲的都是定量(quantitative)的，也可使用回归处理分类问题。
-![定性问题](/img/blog/1014/3.png)
+![定性问题](/img/blog/1014/3.jpg)
 
 ## K近邻回归 KNN Regression
 

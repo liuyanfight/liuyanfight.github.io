@@ -10,6 +10,32 @@ finished: true
 
 > 在服务器上安装Jekyll，可真是太不容易了！！！我已经折腾一下午+一晚上了！看别人安装的都很简单，到自己就各种各样的错误
 
+## 给用户L,加入sudoer  
+
+sudo的作用就是使当前非root用户在使用没有权限的命令 时，直接在命令前加入sudo，在输入自己当前用户的密码就可以完成root用户的功能，而不必在每次使用su -来回切换用户了。sudo的配置文件位于/etc/sudoers，需要root权限才可以读写。
+
+```
+vim /etc/sudoers
+
+找到root ALL=(ALL) ALL这一行，在后面再加上一行就可以了（不用引号）：
+L ALL=(ALL) ALL
+其中username为指定的使用sudo的用户，引号内的空格为tab
+如果你想每次使用sudo命令的时候都提示你输入根密码，移动到这一行：
+#%wheel ALL=(ALL) ALL
+解除#号注释
+如果你不想每次使用sudo命令的时候都提示你输入跟密码，移动到下面这一行：
+#%wheel ALL=(ALL)NOPASSWD:ALL
+解除#号注释
+保存后退出
+
+添加用户名到wheel用户组：
+usermod -G wheel username
+```
+user: L
+pwd:pwd.
+
+发现自己一开始就一直使用root权限，导致文件都只有root用户才可以编辑。尴尬。
+
 ## 安装jekyll
 
 安装各种依赖  
