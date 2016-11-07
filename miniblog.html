@@ -5,7 +5,7 @@ subtitle: 说说我的世界.
 permalink: /miniblog/
 ---
 
-<div class="wrapper">
+<div id="category"></div>
 
 {% assign is_first = true %}
 {% assign is_first_month = true %}
@@ -20,11 +20,11 @@ permalink: /miniblog/
 {% endcapture %}
 
 {% if is_first  %}
-<h2 id="{{ this_year  }}-ref">{{ this_year }}</h2>
+<h2>{{ this_year }}</h2>
 {% endif %}
 
 {% if is_first_month %}
-<h3 id="{{ this_year }}-{{this_month}}-ref">{{this_month}} 月</h3>
+<h3>{{this_month}} 月</h3>
 {% endif %}
 
 {% capture next_year %}
@@ -48,7 +48,7 @@ permalink: /miniblog/
 
 
 <fieldset>
-<ul>
+
     {{ post.content }}
     <span class="date">
       <br />
@@ -60,9 +60,7 @@ permalink: /miniblog/
   			{{ post.location }}
   	  {% endif %}
     </span>
-</ul>
+
 </fieldset>
 <br />
 {% endfor %}
-
-</div>
