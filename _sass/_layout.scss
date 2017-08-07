@@ -134,11 +134,11 @@
 }
 
 .about-list {
-	list-style-type: none;
+    list-style-type: none;
 }
 
 .date {
-	color: #B6B6B6;
+    color: #B6B6B6;
 }
 
 
@@ -147,8 +147,8 @@
  */
 
 .tech{
-	max-width:700px;
-	margin: 25px;
+    max-width:700px;
+    margin: 25px;
     }
 
 .tech .item{
@@ -234,8 +234,31 @@
     background: #91989F;
 }
 
+@media (min-width: 750px) {
+    .tech .describe{
+        width:100px;
+        float:left;
+    }
+    .tech .progress {
+        width:80%;
+        float:left;
+    }
+}
+
+@media (max-width: 750px) {
+    .tech .describe{
+        width:100%;
+        margin-bottom:5px;
+        text-align:left;
+    }
+    .tech .progress {
+        width:100%;
+        margin-bottom:5px;
+    }
+}
+
 /**
- * Date Past Tree
+ * Date Past
  */
 
 .datePast{
@@ -260,7 +283,7 @@
 .datePast .progress {
     float:left;
     height: 25px;
-    background: #CCCCCCFF;
+    background: #E5E5E5;
     border-left: 1px solid transparent;
     border-right: 1px solid transparent;
     width:70%;
@@ -302,32 +325,48 @@
     border-radius: 10px;
 }
 
+.datePast .progress .yellow {
+    background: #FFC408;
+}
+
+.datePast .progress .green {
+    background: #BEC23F;
+}
+
+.datePast .progress .blue {
+    background: #66BAB7;
+}
+
+.datePast .progress .darkblue {
+    background: #0089A7;
+}
+
+.datePast .progress .red {
+    background: #CC543A;
+}
+
 .datePast .progress .grey {
     background: #91989F;
 }
 
-.datePast .progress .green {
-    background: #008000;
-}
-
 @media (min-width: 750px) {
-    .tech .describe{
+    .datePast .describe{
         width:100px;
         float:left;
     }
-    .tech .progress {
+    .datePast .progress {
         width:80%;
         float:left;
     }
 }
 
 @media (max-width: 750px) {
-    .tech .describe{
+    .datePast .describe{
         width:100%;
         margin-bottom:5px;
         text-align:left;
     }
-    .tech .progress {
+    .datePast .progress {
         width:100%;
         margin-bottom:5px;
     }
