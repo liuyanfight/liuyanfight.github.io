@@ -4,27 +4,33 @@ title: Calendar
 subtitle: 我每一天的努力都在证明我是在认真的活着。
 permalink: /calendar/
 ---
+<center>
 <script lanuage="javascript">
 var d1 = new Date();
 var d2 = new Date();
 d2.setMonth(0);
 d2.setDate(1);
 var rq = d1 - d2;
-var s1 = Math.ceil(rq/(24*60*60*1000));
-var s2 = Math.ceil(s1/7);
-document.write("今天是今年中第"+ s1 +"天,第"+ s2 +"周"+"<br>");
-</script>
+var dayPast = Math.ceil(rq/(24*60*60*1000));
+var weekPast = Math.ceil(dayPast/7);
+var fightingday = 20;
+var ratio = fightingday * 100/dayPast;
+document.write("今天是今年的第<font color=red>"+ dayPast +"</font>天,第"+ weekPast +"周。"+"<br>");
+document.write("<br/>今年你努力了<font color=#07F713FF>"+ fightingday +"</font>天,占比"+ ratio.toFixed(2) +"%。仍需努力。"+"<br>");
 
-![calendar](/img/calendar.jpg)
+</script>
+</center>
+
+<img src="/img/calendar.jpg" />
 <br>
 
-<section class="tech">
+<section class="datePast">
     <div class = "item">
         <div class = "describe">
             2017
         </div>
         <div class="progress">
-            <span class="green" style="width: (20/365)%;">Day past </span>
+            <span class="green" style="width: <script>parseInt(ratio)</script> %;"><script> document.write(fightingday+"/"+dayPast)</script></span>
         </div>
     </div>
 </section>
