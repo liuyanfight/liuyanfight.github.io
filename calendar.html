@@ -4,18 +4,27 @@ title: Calendar
 subtitle: 我每一天的努力都在证明我是在认真的活着。
 permalink: /calendar/
 ---
-<center>
-  ![calendar](/img/calendar.jpg)
-</center>
+<script lanuage="javascript">
+var d1 = new Date();
+var d2 = new Date();
+d2.setMonth(0);
+d2.setDate(1);
+var rq = d1 - d2;
+var s1 = Math.ceil(rq/(24*60*60*1000));
+var s2 = Math.ceil(s1/7);
+document.write("今天是今年中第"+ s1 +"天,第"+ s2 +"周"+"<br>");
+</script>
+
+![calendar](/img/calendar.jpg)
+<br>
 
 <section class="tech">
-
     <div class = "item">
         <div class = "describe">
             2017
         </div>
         <div class="progress">
-            <span class="green" style="width: (20/365)%;"></span>
+            <span class="green" style="width: (20/365)%;">Day past </span>
         </div>
     </div>
 </section>
