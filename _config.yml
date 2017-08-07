@@ -14,7 +14,7 @@ disqus_username: liuyanfight # your disqus username
 
 google-analytics: UA-86494680-1  # add it if you have one-86494680-1
 
-skillstree: false # turn on or off the skills tree in about page
+skillstree: true # turn on or off the skills tree in about page
 
 # Build settings
 permalink: none
