@@ -22,7 +22,5 @@ markdown: kramdown
 highlighter: rouge
 kramdown:
   input: GFM
-gems: ["jemoji"]
 gems:
-    - jekyll-coffeescript
-    - jekyll-paginate
+    - jemoji
