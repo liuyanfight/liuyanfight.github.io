@@ -1,13 +1,12 @@
 ---
 layout: post
 title: C++ Primer 5th Plan
-date: 2017-08-04 17:47
+date: 2017-08-01 17:47
 categories: C++ 
 tags: C++ C++Primer
 location: Nokia Townhall
 finished: true
 ---
-
 
 订一个计划，通读C++ Primer 5th，习题照写。
 形式仿照
