@@ -23,6 +23,6 @@ highlighter: rouge
 kramdown:
   input: GFM
 gems:
+    - jemoji # Github emoji
     - jekyll-coffeescript
     - jekyll-paginate
-    - jemoji # Github emoji
