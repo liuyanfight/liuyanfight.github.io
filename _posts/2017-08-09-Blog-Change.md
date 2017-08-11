@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Blog的变化
+title: Everyday
 date: 2017-08-10 17:47
 categories: C++ 
 tags: C++ C++Primer
@@ -15,13 +15,13 @@ Blog 建立于2016/07/21，来自[Nice Blog](https://github.com/itisbenjamin/Nic
 
 在上面吐槽抱怨了很多，决定还是隐藏起来。
 
-2016/07
+## 2016/07
 
 添加google calendar页面，添加project页面。
 
-2017/08/10
+## 2017/08/10
 
-修改Calendar页面，使用日历图片代替日历，添加记日功能。通过修改fightday达到。
+修改Calendar页面，使用日历图片代替日历，添加记日功能。通过修改`fightingday`达到。
 
 修改code主题，加边框，灰色背景，突出效果。修改`.highlight` 和` .highlight rouge`
 
