@@ -18,6 +18,7 @@ Blog 建立于2016/07/21，来自[Nice Blog](https://github.com/itisbenjamin/Nic
 ## 2016/07
 
 添加google calendar页面，添加project页面。
+添加miniblog，类似博客。
 
 ## 2017/08/10
 
