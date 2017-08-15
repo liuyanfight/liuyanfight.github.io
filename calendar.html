@@ -13,7 +13,7 @@ d2.setDate(1);
 var rq = d1 - d2;
 var dayPast = Math.ceil(rq/(24*60*60*1000));
 var weekPast = Math.ceil(dayPast/7);
-var fightingday = 24;
+var fightingday = 26;
 var ratio = fightingday * 100/dayPast;
 document.open();
 document.write("今天是今年的第<font color=red>"+ dayPast +"</font>天,第"+ weekPast +"周。"+"<br>");
@@ -28,7 +28,7 @@ document.close();
             2017
         </div>
         <div class="progress">
-            <span class="darkblue" style="width: <script> document.write(parseInt(ratio))</script>%;"></span>
+            <span class="darkblue" style="width: <script>parseInt(ratio)</script>%;"></span>
         </div>
     </div>
 </section>

@@ -156,10 +156,11 @@ a:hover {
  * Blockquotes
  */
 blockquote {
-    border-left: 5px solid #eee;
+    border-left: 8px solid #2a2e2e;
     margin-left: 30px;
     padding: 5px 15px;
-    color: #888888;
+    color: #2a2e2e;
+    font-family: cursive, fantasy,sans-serif;
 }
 
 
@@ -168,9 +169,9 @@ blockquote {
  */
 hr {
     border: none;
-    height: 1px;
+    height: 5px;
     margin: 40px auto;
-    background: #dcdcdc;
+    background: #444;
     width: 100%;
 }
 
