@@ -18,10 +18,6 @@ var ratio = fightingday * 100/dayPast;
 document.open();
 document.write("今天是今年的第<font color=red>"+ dayPast +"</font>天,第"+ weekPast +"周。"+"<br>");
 document.write("<br/>今年你努力了<font color=#07F713FF>"+ fightingday +"</font>天,占比"+ ratio.toFixed(2) +"%。仍需努力。"+"<br>");
-
-  var progess = document.getElementById("calendar");
-  progess.style.width =parseInt(ratio)*5;
-
 document.close();
 </script>
 </center>
@@ -37,5 +33,10 @@ document.close();
     </div>
 </section>
 <br>
+
+<script type="text/javascript">
+  var progess = document.getElementById("calendar");
+  progess.style.width =parseInt(ratio)*5;
+</script>
 
 <img src="/img/calendar.jpg" width="100%" height="100%" />
