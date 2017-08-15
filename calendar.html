@@ -27,11 +27,16 @@ document.close();
         <div class = "describe">
             2017
         </div>
-        <div class="progress">
-            <span class="darkblue" style="width: <script> document.write(parseInt(ratio))</script>%;"></span>
+        <div class="progress" >
+            <span class="darkblue" id = "calendar"></span>
         </div>
     </div>
 </section>
 <br>
+
+<script type="text/javascript">
+  var progess = document.getElementById("calendar");
+  progess.style.width =parseInt(ratio)*500;
+</script>
 
 <img src="/img/calendar.jpg" width="100%" height="100%" />
