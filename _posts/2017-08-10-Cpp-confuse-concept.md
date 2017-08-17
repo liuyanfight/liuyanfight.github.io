@@ -15,5 +15,3 @@ finished: false
 - [ ] 右值引用与左值引用
 - [ ] 顶层const和底层const
 - [x] typedef 指向char的常量指针 指向常量字符的指针 [look here](http://liuyanfight.github.io/c++/Cpp-ch02.html#dir15)
-
-
