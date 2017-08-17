@@ -35,3 +35,6 @@ Blog 建立于2016/07/21，来自[Nice Blog](https://github.com/itisbenjamin/Nic
 修改分割线，颜色加深，加宽
 
 修改引用样式， border加宽加黑，改变字体
+
+## 2017-08-17
+修改archive 图标，添加未完成文章标记，修改Everyday图标
