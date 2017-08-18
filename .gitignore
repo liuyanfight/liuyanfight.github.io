@@ -1,1 +1,3 @@
-_layouts/mini.html
+_site/
+.bundle/
+.jekyll-metadata
