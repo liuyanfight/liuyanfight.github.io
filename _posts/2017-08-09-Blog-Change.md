@@ -54,13 +54,13 @@ Blog 建立于2016/07/21，来自[Nice Blog](https://github.com/itisbenjamin/Nic
 
 ![2017-08-18_145908](/img/blog/20170809/2017-08-18_145908.png)
 
-执行`bundle exec jekyll serve`即可。
+​	执行`bundle exec jekyll serve`即可。
 
 - update config file
 
 ![2017-08-18_150232](/img/blog/20170809/2017-08-18_150232.png)
 
-config文件中的gems需要修改为plugins，所以之前是没有插件的原因吗？
+​	config文件中的gems需要修改为plugins，所以之前是没有插件的原因吗？
 
 - javascript runtime
 
@@ -73,18 +73,17 @@ sudo apt install therubyracersmiley:
 
 - 删除多版本jekyll
 
-`gem uninstall jekyll`
+  `gem uninstall jekyll`
 
 - emoji不能显示
 
-在emoji加载时不知怎么造成了注释的混乱，因此内容无法显示。完全删除该注释(google analysis)即可
+  在emoji加载时不知怎么造成了注释的混乱，因此内容无法显示。完全删除该注释(google analysis)即可
 
-添加emoji css样式，以inline模式加载
+  添加emoji css样式，以inline模式加载
 
-emoji list : https://www.webpagefx.com/tools/emoji-cheat-sheet/
+  [emoji list](https://www.webpagefx.com/tools/emoji-cheat-sheet/)
 
-- 还是搞不定任务列表orz
-
+- 还是搞不定任务列表orz :sweat:
 
 
 

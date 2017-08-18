@@ -34,15 +34,15 @@ permalink: /archive/
 
 		<a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
 		<span class="date"> 
-        &nbsp;&nbsp;
+        &nbsp;
         {{ post.date | date: "%Y/%m/%d" }}
         {% if post.location %}
-					&nbsp;&nbsp;
+					&nbsp;
 					<i class="fa fa-map-marker"></i>
 					{{ post.location }}
 				{% endif %}
 				{% if post.finished == false %}
-					&nbsp;&nbsp;
+					&nbsp;
 					<i class="fa fa-caret-square-o-right" aria-hidden="true"></i>
 				{% endif %}
 		</span>
