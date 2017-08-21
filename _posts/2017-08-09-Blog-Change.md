@@ -66,7 +66,7 @@ Blog 建立于2016/07/21，来自[Nice Blog](https://github.com/itisbenjamin/Nic
 
 ![2017-08-18_150728](/img/blog/20170809/2017-08-18_150728.png)
 
-```
+```sh
 sudo apt install nodejs
 sudo apt install therubyracersmiley:
 ```
@@ -84,6 +84,14 @@ sudo apt install therubyracersmiley:
   [emoji list](https://www.webpagefx.com/tools/emoji-cheat-sheet/)
 
 - 还是搞不定任务列表orz :sweat:
+
+## 2017-08-21
+
+修改404page,显示图片
+
+隐藏miniblog横向滚动条
+
+emoji表情代替checkbox
 
 
 
