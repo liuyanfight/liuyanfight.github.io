@@ -6,7 +6,7 @@ date: 2016-09-04
 author: L
 category: Computer Vision
 tags: ML 学习 CV DL Sydney Software UTS
-finished: false
+finished: true
 ---
 
 > 老师给的3个文件，一个介绍Caffe，一个介绍GPU账号软件，还有一个介绍Python，要这周看一下下周聊一聊，现在已经是周日晚上10点了。。。赶紧看。

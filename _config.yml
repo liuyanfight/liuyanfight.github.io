@@ -1,6 +1,6 @@
 # Site settings
 title: 坚持就是胜利
-name: liuyanfight # your name
+name: L # your name
 email: liuyanfight@foxmail.com # your email address
 description: This is your life and it's ending one minute at a time. # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
@@ -11,6 +11,8 @@ timezone: Asia/Shanghai
 twitter_username: liuyanfight # your Twitter username
 github_username: liuyanfight # your Github username
 disqus_username: liuyanfight # your disqus username
+
+skip_render: googleca4a0b353ec7d0f3.html
 
 google-analytics: UA-86494680-1  # add it if you have one-86494680-1
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 拷贝初始化与直接初始化
+title: 顶层const与底层const
 date: 2017-08-17 
 categories: C++ 
 tags: C++ C++Primer

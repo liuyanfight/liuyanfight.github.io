@@ -5,21 +5,21 @@ subtitle: 我每一天的努力都在证明我是在认真的活着。
 permalink: /calendar/
 ---
 <center>
-<script lanuage="javascript">
-var d1 = new Date();
-var d2 = new Date();
-d2.setMonth(0);
-d2.setDate(1);
-var rq = d1 - d2;
-var dayPast = Math.ceil(rq/(24*60*60*1000));
-var weekPast = Math.ceil(dayPast/7);
-var fightingday = 31;
-var ratio = fightingday * 100/dayPast;
-document.open();
-document.write("今天是今年的第<font color=red>"+ dayPast +"</font>天,第"+ weekPast +"周。"+"<br>");
-document.write("<br/>今年你努力了<font color=#07F713FF>"+ fightingday +"</font>天,占比"+ ratio.toFixed(2) +"%。仍需努力。"+"<br>");
-document.close();
-</script>
+  <script lanuage="javascript">
+    var d1 = new Date();
+    var d2 = new Date();
+    d2.setMonth(0);
+    d2.setDate(1);
+    var rq = d1 - d2;
+    var dayPast = Math.ceil(rq/(24*60*60*1000));
+    var weekPast = Math.ceil(dayPast/7);
+    var fightingday = 32;
+    var ratio = fightingday * 100/dayPast;
+    document.open();
+    document.write("今天是今年的第<font color=red>"+ dayPast +"</font>天,第"+ weekPast +"周。"+"<br>");
+    document.write("<br/>今年你努力了<font color=#07F713FF>"+ fightingday +"</font>天,占比"+ ratio.toFixed(2) +"%。仍需努力。"+"<br>");
+    document.close();
+  </script>
 </center>
 
 <section class="datePast">
