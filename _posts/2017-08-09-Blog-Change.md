@@ -93,5 +93,12 @@ sudo apt install therubyracersmiley:
 
 emoji表情代替checkbox
 
+## 2017-08-23
 
+category页面添加类似tag页面的导航，样式待更新
 
+添加google收录
+
+修改tag category页面锚点
+
+category 会转换为小写，而 Tag 大小写敏感
