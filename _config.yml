@@ -12,8 +12,6 @@ twitter_username: liuyanfight # your Twitter username
 github_username: liuyanfight # your Github username
 disqus_username: liuyanfight # your disqus username
 
-skip_render: googleca4a0b353ec7d0f3.html
-
 google-analytics: UA-86494680-1  # add it if you have one-86494680-1
 
 skillstree: true # turn on or off the skills tree in about page
