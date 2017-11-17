@@ -26,3 +26,7 @@ finished: false
 
 :heavy_check_mark:   [auto && ](http://liuyanfight.github.io/c++/Cpp-auto.html)
 
+:heavy_check_mark: [类型别名typedef与using](https://stackoverflow.com/questions/10747810/what-is-the-difference-between-typedef-and-using-in-c11)
+
+
+
