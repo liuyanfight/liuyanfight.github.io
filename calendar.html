@@ -6,6 +6,9 @@ permalink: /calendar/
 ---
 <center>
   <script lanuage="javascript">
+
+    var fightingday = 0;
+
     var d1 = new Date();
     var d2 = new Date();
     d2.setMonth(0);
@@ -13,14 +16,8 @@ permalink: /calendar/
     var rq = d1 - d2;
     var dayPast = Math.ceil(rq/(24*60*60*1000));
     var weekPast = Math.ceil(dayPast/7);
-    var fightingday = 0;
     var ratio = fightingday * 100/dayPast;
-    dNSN.setFullYear(2017);
-    dNSN.setMonth(12);
-    dNSN.setDate(26);
-    var weekNSNPast = Math.ceil((d1-dNSN)/(24*60*60*1000/7));
     document.open();
-    document.write("这是来公司的第"+ weekNSNPast +"周。"+"<br>");
     document.write("今天是今年的第<font color=red>"+ dayPast +"</font>天,第"+ weekPast +"周。"+"<br>");
     document.write("<br/>今年你努力了<font color=#07F713FF>"+ fightingday +"</font>天,占比"+ ratio.toFixed(2) +"%。仍需努力。"+"<br>");
     document.close();
@@ -41,7 +38,14 @@ permalink: /calendar/
 
 <script type="text/javascript">
   var progess = document.getElementById("calendar");
-  progess.style.width =parseInt(ratio)*5;
+  progess.style.width =parseInt(ratio);
+
+  document.open();
+  var dNSN = new Date('12/26/2016');
+  var dITP = new Date('9/15/2017');
+  document.write("这是来公司的第"+ Math.ceil((d1-dNSN)/(24*60*60*1000/7)) +"周。 要加油。"+"<br>");  
+  document.write("这是生病的第"+ Math.ceil((d1-dITP)/(24*60*60*1000/7)) +"周。 健康很重要。"+"<br>");  
+  document.close();
 </script>
 
 <img src="/img/calendar.jpg" width="800" height="600" />
