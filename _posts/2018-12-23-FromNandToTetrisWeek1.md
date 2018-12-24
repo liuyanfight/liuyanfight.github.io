@@ -6,7 +6,7 @@ date: 2018-12-23
 location: Home
 category: OpenCourse
 tags: HDL Coursera
-finished: false
+finished: true
 typora-copy-images-to: ..\img\blog\20181223
 ---
 
@@ -50,9 +50,13 @@ typora-copy-images-to: ..\img\blog\20181223
 全1为0， 此课程中认为NAND是最基本的单元不需要实现
 
 > 芯片名:    Nand
+>
 > 输    入:    a, b
+>
 > 输    出:    out
+>
 > 功    能:    If a=b=1 then out=0 else out=1
+>
 > 说    明:    基本门，不需实现
 
 |  a   |  b   | Nand(a,b) |
@@ -69,8 +73,11 @@ typora-copy-images-to: ..\img\blog\20181223
 单输入变量的NOT gate, 也成为converter
 
 > 芯片名:    Not
+>
 > 输    入:    in
+>
 > 输    出:    out
+>
 > 功    能:    If in=0 then out=1 else out=0
 
 | in   | out  |
@@ -95,8 +102,11 @@ CHIP Not {
 只有当输入都是1时，输出1
 
 > 芯片名:    And
+>
 > 输    入:    a, b
+>
 > 输    出:    out
+>
 > 功    能:    If a=b=1 then out=1 else out=0
 
 |   a   |   b   |  out  |
@@ -125,8 +135,11 @@ CHIP And {
 有1为1
 
 > 芯片名:    Or
+>
 > 输    入:    a, b
+>
 > 输    出:    out
+>
 > 功    能:    If a=b=0 then out=0 else out=1
 
 |   a   |   b   |  out  |
@@ -157,8 +170,11 @@ CHIP Or {
 即异或，相同为0，不同为1
 
 > 芯片名:    Xor
+>
 > 输    入:    a, b
+>
 > 输    出:    out
+>
 > 功    能:    If a!=b then out=1 else out=0
 
 |   a   |   b   |  out  |
@@ -188,8 +204,11 @@ CHIP Xor {
 三输入变量的门电路。
 
 > 芯片名:    Mux
+>
 > 输    入:    a, b, sel
+>
 > 输    出:    out
+>
 > 功    能:    If sel = 0 then out=a else out=b
 
 |   a   |   b   |  sel  |  out  |
@@ -231,8 +250,11 @@ CHIP Mux {
 与Mux相反,只有一个输入变量，有两个输出
 
 > 芯片名:    DMux
+>
 > 输    入:    in, sel
+>
 > 输    出:    out
+>
 > 功    能:    If sel = 0 then (a=in, b=0) else (a=0, b=in)
 
 |  in   |  sel  |   a   |   b   |
@@ -268,13 +290,17 @@ CHIP DMux {
 - Multi-Bit Not 对它的n位输入总线上的每一位取反
 
 > 芯片名:    Not16
+>
 > 输    入:    in[16]
+>
 > 输    出:    out[16]
+>
 > 功    能:    For i=0..15 out[i]=Not(in[i])
 
 - Multi-Bit And [And16.hdl](https://github.com/liuyanfight/FromNandToTetris/blob/master/project01/And16.hdl)
 
 > 16-bit bitwise And:
+>
 > for i = 0..15: out[i] = (a[i] and b[i])
 
 - Multi-Bit Or [Or16.hdl](https://github.com/liuyanfight/FromNandToTetris/blob/master/project01/Or16.hdl)
@@ -290,6 +316,7 @@ CHIP DMux {
 对于一个n位的Or门， 当n位输入变量中任意一位或以上为1，输出为1，否则为0
 
 > 8-way Or: 
+>
 > out = (in[0] or in[1] or ... or in[7])
 
 [Or8Way.hdl](https://github.com/liuyanfight/FromNandToTetris/blob/master/project01/Or8Way.hdl)
@@ -299,9 +326,13 @@ CHIP DMux {
 一个拥有m个通道，每个通道数据宽度为n位的multiplexor选择器
 
 > 4-way 16-bit multiplexor:
+>
 > out = a if sel == 00
+>
 > ​          b if sel == 01
+>
 > ​          c if sel == 10
+>
 > ​          d if sel == 11
 
 ![Mux4Way16](../img/blog/20181223/1545565073674.png)
@@ -319,9 +350,13 @@ CHIP DMux {
 m通道n位的demultiplexor从m个可能的n位输出通道中选择输出一个n位的输入变量
 
 > 4-way demultiplexor:
+>
 > {a, b, c, d} = {in, 0, 0, 0} if sel == 00
+>
 > ​                      {0, in, 0, 0} if sel == 01
+>
 > ​                      {0, 0, in, 0} if sel == 10
+>
 > ​                      {0, 0, 0, in} if sel == 11
 
 ![DMux4Way](../img/blog/20181223/1545565366111.png)
