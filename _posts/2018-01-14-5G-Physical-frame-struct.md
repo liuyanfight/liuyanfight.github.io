@@ -203,7 +203,7 @@ RE可被$(k,l)_{p,\mu}$唯一标识，对应着一个PRB $a_{k,l}^{(p,\mu)}$
 
 每个RB在频率上有**12**个子载波(SCS).
 
-Q: PointA and CRB0
+Q: [PointA and CRB0](http://www.txrjy.com/thread-1037925-1-1.html)
 
 ![img](https://i.loli.net/2018/07/11/5b45b75588f38.png)
 
