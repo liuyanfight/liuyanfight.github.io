@@ -6,7 +6,7 @@ date: 2019-01-14
 location: Hangzhou
 category: OpenCourse
 tags: Algorithm Coursera
-finished: false
+finished: true
 typora-copy-images-to: ..\img\blog\20190114
 ---
 
@@ -110,7 +110,7 @@ Option 2:
 
 当然不是很好，主要败在了性能上面 用到了太多的connect和unit（据说使用find更快）
 
-###坑：
+### 坑：
 
 - 题意不懂 不知道怎么入手 Percolation这个类要自己建 测试main函数要自己写
 - java不熟悉
